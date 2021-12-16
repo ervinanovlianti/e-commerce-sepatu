@@ -1,15 +1,27 @@
 <?php 
     class InputPenjualan extends CI_Controller{
+        public function  __construct()
+        {
+            parent::__construct();
+            if ($this->session->userdata('hak_akses') != '1') {
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Anda belum login!</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>');
+                redirect('welcome');
+            }
+        }
         public function index()
         {
             $data['title'] = "Input Penjualan";
             $data['kode'] = $this->model_barang->kodetransaksi();
             $data['pelanggan'] = $this->model_barang->get_data('tb_pelanggan')->result();
             $data['barang'] = $this->model_barang->get_data('tb_barang')->result();
-            $this->load->view('templates/header');
-            $this->load->view('templates/sidebar');
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/sidebar');
             $this->load->view('admin/formInputPenjualan', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('admin/templates/footer');
         }
         public function tambahKeranjang($id)
         {
@@ -48,4 +60,3 @@
         }
         
     }
-?>

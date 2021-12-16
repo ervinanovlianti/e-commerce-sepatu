@@ -49,7 +49,7 @@
                 <p class="fw-light text-muted mb-0"><?php echo $this->session->userdata('username') ?></p>
               </div>
               <a class="dropdown-item" href="<?php echo base_url('userProfil') ?>"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile </a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Log Out</a>
+              <a class="dropdown-item" href="<?php echo base_url('welcome/logout') ?>"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Log Out</a>
             </div>
           </li>
         </ul>
@@ -79,8 +79,8 @@
 
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('kasir/inputPenjualan') ?>">
-              <i class="menu-icon mdi mdi-briefcase-upload"></i>
-              <span class="menu-title">Penjualan</span>
+              <i class="menu-icon mdi mdi-cart"></i>
+              <span class="menu-title">Invoices</span>
             </a>
           </li>
           <li class="nav-item">

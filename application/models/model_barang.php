@@ -4,8 +4,10 @@
             return $this->db->get($table);
         }
         public function insert_data($data, $table){
+            // $this->ukuran = implode(',', $this->input->post('ukuran', true));
             $this->db->insert($table, $data);
         }
+
         public function update_data($table, $data, $where){
             $this->db->update($table, $data, $where);
         }
@@ -19,6 +21,23 @@
             $query = $this->db->get_where('tb_barang', array('id_barang' => $id))->row();
             return $query;
         }
+        public function kodebarang()
+        {
+            $this->db->select('RIGHT(tb_barang.id_barang, 2) as id_barang', FALSE);
+            $this->db->order_by('id_barang','DESC');
+            $this->db->limit(1);
+            $query = $this->db->get('tb_barang');
+            if ($query->num_rows() <> 0) {
+                # cek kode jika telah tersedia
+                $data = $query->row();
+                $kode = intval($data->id_barang) + 1;
+            }else{
+                $kode = 1; //cek jika kode belum terdapat pada tabel
+            }
+                $batas = str_pad($kode, 3, "0", STR_PAD_LEFT);
+                $kodeunik = "SPT"."-".$batas; // format kode
+                return $kodeunik;
+        }       
         public function kode()
         {
             $this->db->select('RIGHT(tb_pelanggan.id_pelanggan, 2) as id_pelanggan', FALSE);

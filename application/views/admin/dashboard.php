@@ -34,7 +34,7 @@
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">User</p>
-                            <h3 class="rate-percentage text-center">2m:35s</h3>
+                            <h3 class="rate-percentage text-center"><?php echo $user ?></h3>
                           </div>
                         </div>
                       </div>

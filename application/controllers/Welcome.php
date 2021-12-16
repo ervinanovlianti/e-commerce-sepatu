@@ -10,7 +10,7 @@ class Welcome extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = "Form Login";
             $this->load->view('login');
-            $this->load->view('templates/header', $data);
+            $this->load->view('admin/templates/header', $data);
         } else {
             $username = $this->input->post('username');
             $password = $this->input->post('password');
@@ -40,6 +40,9 @@ class Welcome extends CI_Controller {
                         break;
                     case 3:
                         redirect('manager/dashboard');
+                        break;
+                    case 4:
+                        redirect('users/dashboard');
                         break;
                     default:
                         break;

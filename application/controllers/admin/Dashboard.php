@@ -1,6 +1,18 @@
 <?php 
 
 class Dashboard extends CI_Controller{
+    public function  __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('hak_akses') != '1') {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Anda belum login!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
+            redirect('welcome');
+        }
+    }
     public function index()
     {
         $barang = $this->db->query("SELECT * FROM tb_barang");
@@ -8,15 +20,17 @@ class Dashboard extends CI_Controller{
         $supplier = $this->db->query("SELECT * FROM tb_supplier");
         $pelanggan = $this->db->query("SELECT * FROM tb_pelanggan");
         $transaksi = $this->db->query("SELECT * FROM tb_transaksi");
+        $user = $this->db->query("SELECT * FROM tb_user");
         $data['barang'] = $barang->num_rows();
         $data['barangmasuk'] = $barang_masuk->num_rows();
         $data['supplier'] = $supplier->num_rows();
         $data['pelanggan'] = $pelanggan->num_rows();
         $data['transaksi'] = $transaksi->num_rows();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $data['user'] = $user->num_rows();
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/dashboard', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/footer');
 
     }
 }

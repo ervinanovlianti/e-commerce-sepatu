@@ -35,6 +35,7 @@
                                     <option value="Admin">Admin</option>
                                     <option value="Kasir">Kasir</option>
                                     <option value="Manager">Manager</option>
+                                    <option value="User">User</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -52,6 +53,7 @@
                                     <option value="1">Admin</option>
                                     <option value="2">Kasir</option>
                                     <option value="3">Manager</option>
+                                    <option value="4">User</option>
                                 </select>
                             </div>
                             <div class="form-group">

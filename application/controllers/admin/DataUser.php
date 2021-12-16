@@ -1,23 +1,35 @@
 <?php
 class DataUser extends CI_Controller
 {
+    public function  __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('hak_akses') != '1') {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Anda belum login!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
+            redirect('welcome');
+        }
+    }
     public function index()
     {
         $data['title'] = "Data User";
         $data['user'] = $this->model_barang->get_data('tb_user')->result();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/dataUser', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/footer');
     }
     public function tambahData()
     {
         $data['title'] = "Form Tambah Data User";
         $data['kode'] = $this->model_barang->kodeuser();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/tambahDataUser', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/footer');
     }
     public function tambahDataAksi()
     {
@@ -61,10 +73,10 @@ class DataUser extends CI_Controller
         $where = array('id_user' => $id);
         $data['title'] = "Form Update Data User";
         $data['user'] = $this->db->query("SELECT * FROM tb_user WHERE id_user='$id'")->result();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar');
+        $this->load->view('admin/templates/header', $data);
+        $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/updateDataUser', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/footer');
     }
     public function updateDataAksi()
     {

@@ -23,7 +23,7 @@
                                 foreach ($ukuran as $u) : ?>
                                     <tr class="text-center">
                                         <td><?php echo $no++ ?></td>
-                                        <td><?php echo $u->jenis_ukuran ?></td>
+                                        <td><?php echo $u->ukuran ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

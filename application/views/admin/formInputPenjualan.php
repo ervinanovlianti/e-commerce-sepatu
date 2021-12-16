@@ -21,7 +21,12 @@
                     </div>
                     <div class="col-md-3">
                       <label>Pelanggan</label>
-                      <input type="text" class="form-control" placeholder="-Optional-">
+                      <select class="form-control" name="nama_pelanggan">
+                        <option value="">--Optional--</option>
+                        <?php foreach ($pelanggan as $pl) : ?>
+                          <option value="<?php echo $pl->nama_pelanggan ?>"><?php echo $pl->nama_pelanggan ?></option>
+                        <?php endforeach; ?>
+                      </select>
                     </div>
                     <div class="col-md-3">
                       <label class="text-white">Data Barang</label>
@@ -163,7 +168,7 @@
                   <hr>
                   <h2 class="fw-bold">Kembalian :</h2>
                   <hr>
-                  <h3 class="text-end fw-bold text-success">Rp. <?php echo number_format($this->cart->total(), 0, ',', '.') ?></h3>
+                  <!-- <h3 class="text-end fw-bold text-success">Rp. <?php echo number_format($this->cart->total(), 0, ',', '.') ?></h3> -->
                   <hr>
                   <button class="btn btn-info">Simpan</button>
                 </div>

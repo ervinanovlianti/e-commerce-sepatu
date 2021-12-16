@@ -48,8 +48,8 @@
                 <p class="mb-1 mt-3 font-weight-semibold"><?php echo $this->session->userdata('nama') ?></p>
                 <p class="fw-light text-muted mb-0"><?php echo $this->session->userdata('username') ?></p>
               </div>
-              <a class="dropdown-item" href="<?php echo base_url('userProfil') ?>"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile </a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Log Out</a>
+              <a class="dropdown-item" href="<?php echo base_url('admin/userProfil') ?>"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile </a>
+              <a class="dropdown-item" href="<?php echo base_url('welcome/logout') ?>"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Log Out</a>
             </div>
           </li>
         </ul>
@@ -61,7 +61,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
+      <!-- <div class="theme-setting-wrapper">
         <div id="settings-trigger"><i class="ti-settings"></i></div>
         <div id="theme-settings" class="settings-panel">
           <i class="settings-close ti-close"></i>
@@ -82,7 +82,7 @@
             <div class="tiles default"></div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- partial -->
       <!-- sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -154,23 +154,16 @@
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/laporanPenjualan') ?>">Barang</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/laporanPenjualan') ?>">Pemasukan</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/laporanPenjualan') ?>">Penjualan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/laporanPenjualan') ?>">Laba</a></li>
               </ul>
             </div>
           </li>
 
           <!-- <li class="nav-item nav-category">Setting</li> -->
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" href="<?php echo base_url('admin/userProfil') ?>">
               <i class="menu-icon mdi mdi-account-circle-outline"></i>
               <span class="menu-title">User</span>
-              <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/userProfil') ?>"> Profil </a></li>
-              </ul>
-            </div>
           </li>
         </ul>
       </nav>

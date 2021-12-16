@@ -1,21 +1,33 @@
 <?php 
 class DataPelanggan extends CI_Controller{
+    public function  __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('hak_akses') != '1') {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Anda belum login!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
+            redirect('welcome');
+        }
+    }
     public function index(){
         $data['title'] = "Data Pelanggan";
         $data['pelanggan'] = $this->model_barang->get_data('tb_pelanggan')->result();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/dataPelanggan', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/footer');
     }
     public function tambahData()
     {
         $data['title'] = "Form Tambah Data Pelanggan";
         $data['kode'] = $this->model_barang->kode();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/tambahDataPelanggan', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/footer');
     }
     public function inputdata()
     {

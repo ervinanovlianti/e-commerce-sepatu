@@ -25,22 +25,18 @@
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item d-none d-lg-block">
-            <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
-              <span class="input-group-addon input-group-prepend border-right">
-                <span class="icon-calendar input-group-text calendar-icon"></span>
+          <li class="nav-link">
+            <a class="btn btn-primary position-relative" href="<?php echo base_url('users/keranjang') ?>">
+              <i class="mdi mdi-cart"></i>
+              Keranjang
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                1
               </span>
-              <input type="text" class="form-control">
-            </div>
+            </a>
           </li>
-          <li class="nav-item">
-            <form class="search-form" action="#">
-              <i class="icon-search"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-            </form>
-          </li>
+          
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-            <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link" href="#">
               <img class="img-xs rounded-circle" src="<?php echo  base_url('assets/foto_user/') . $this->session->userdata('foto_user') ?>" alt="Profile image"> </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
@@ -63,30 +59,14 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('manager/dashboard') ?>">
+            <a class="nav-link" href="<?php echo base_url('users/dashboard') ?>">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-              <i class="menu-icon mdi mdi-clipboard-text"></i>
-              <span class="menu-title">Laporan</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('manager/laporanPenjualan') ?>">Barang</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('manager/laporanPenjualan') ?>">Pemasukan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('manager/laporanPenjualan') ?>">Penjualan</a></li>
-              </ul>
-            </div>
-          </li>
-
           <!-- <li class="nav-item nav-category">Setting</li> -->
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('manager/userProfil') ?>">
+            <a class="nav-link" href="<?php echo base_url('users/userProfil') ?>">
               <i class="menu-icon mdi mdi-account-circle-outline"></i>
               <span class="menu-title">User</span>
             </a>

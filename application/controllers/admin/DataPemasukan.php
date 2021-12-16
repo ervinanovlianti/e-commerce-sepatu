@@ -1,13 +1,25 @@
 <?php 
     class DataPemasukan extends CI_Controller{
+    public function  __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('hak_akses') != '1') {
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Anda belum login!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
+            redirect('welcome');
+        }
+    }
         public function index()
         {
             $data['title'] = "Riwayat Data Barang Masuk";
             $data['barangmasuk'] = $this->model_barang->get_data('tb_barang_masuk')->result();
-            $this->load->view('templates/header');
-            $this->load->view('templates/sidebar');
+            $this->load->view('admin/templates/header');
+            $this->load->view('admin/templates/sidebar');
             $this->load->view('admin/dataPemasukan', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('admin/templates/footer');
         }
     //     public function tambahData()
     // {
@@ -15,10 +27,10 @@
     //     $data['kode'] = $this->model_barang->kodebarangmasuk();
     //     $data['kategori'] = $this->model_barang->get_data('tb_kategori')->result();
     //     $data['supplier'] = $this->model_barang->get_data('tb_supplier')->result();
-    //     $this->load->view('templates/header');
-    //     $this->load->view('templates/sidebar');
+    //     $this->load->view('admin/templates/header');
+    //     $this->load->view('admin/templates/sidebar');
     //     $this->load->view('admin/tambahBarangBaru', $data);
-    //     $this->load->view('templates/footer');
+    //     $this->load->view('admin/templates/footer');
     // }
     public function tambahStok()
     {
@@ -26,10 +38,10 @@
         $data['kode'] = $this->model_barang->kodebarangmasuk();
         $data['supplier'] = $this->model_barang->get_data('tb_supplier')->result();
         $data['barang'] = $this->model_barang->get_data('tb_barang')->result();
-        $this->load->view('templates/header');
-        $this->load->view('templates/sidebar');
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/tambahStokBarang', $data);
-        $this->load->view('templates/footer');
+        $this->load->view('admin/templates/footer');
     }
     public function tambahDataAksi()
     {
@@ -59,10 +71,10 @@
             $data['supplier'] = $this->model_barang->get_data('tb_supplier')->result();
             $data['barang'] = $this->model_barang->get_data('tb_barang')->result();
             $data['barangmasuk'] = $this->db->query("SELECT * FROM tb_barang_masuk WHERE id_barangmasuk='$id'")->result();
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar');
+            $this->load->view('admin/templates/header', $data);
+            $this->load->view('admin/templates/sidebar');
             $this->load->view('admin/updateDataPemasukan', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('admin/templates/footer');
         }
         public function updateDataAksi()
         {
