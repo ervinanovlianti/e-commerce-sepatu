@@ -58,33 +58,7 @@
         </button>
       </div>
     </nav>
-    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_settings-panel.html -->
-      <!-- <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-            <div class="img-ss rounded-circle bg-light border me-3"></div>Light
-          </div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme">
-            <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
-          </div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div> -->
-      <!-- partial -->
-      <!-- sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
@@ -93,7 +67,6 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <!-- <li class="nav-item nav-category">Data Master</li> -->
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('admin/dataBarang') ?>">
               <i class="menu-icon mdi mdi-briefcase"></i>
@@ -117,43 +90,25 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-briefcase-download"></i>
+            <a class="nav-link" href="<?php echo base_url('admin/dataPemasukan') ?>">
+              <i class=" menu-icon mdi mdi-briefcase-download"></i>
               <span class="menu-title">Pemasukan</span>
-              <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/dataPemasukan') ?>">Data Pemasukan</a></li>
-                <!-- <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/inputPemasukan') ?>">Input Pemasukan</a></li> -->
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
-              <i class="menu-icon mdi mdi-briefcase-upload"></i>
-              <span class="menu-title">Penjualan</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="<?php echo base_url('admin/dataPenjualan') ?>">Data Penjualan</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?php echo base_url('admin/inputPenjualan') ?>">Input Penjualan</a></li>
-              </ul>
-            </div>
-          </li>
-          <!-- <li class="nav-item nav-category">Report</li> -->
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <i class="menu-icon mdi mdi-clipboard-text"></i>
-              <span class="menu-title">Laporan</span>
+              <span class="menu-title">Penjualan</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/laporanPenjualan') ?>">Barang</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/laporanPenjualan') ?>">Pemasukan</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/laporanPenjualan') ?>">Penjualan</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo base_url('admin/dataPenjualan') ?>">Data</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/laporanPenjualan') ?>">Laporan</a></li>
               </ul>
             </div>
           </li>

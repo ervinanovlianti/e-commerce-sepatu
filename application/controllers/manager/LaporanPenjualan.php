@@ -21,4 +21,44 @@ class LaporanPenjualan extends CI_Controller
         $this->load->view('manager/laporanPenjualan', $data);
         $this->load->view('manager/templates_m/footer');
     }
+    public function cetak_lap_harian()
+    {
+        $tanggal = $this->input->post('tanggal');
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+        $data = array(
+            'tanggal' => $tanggal,
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+        );
+        $data['title'] = "Laporan Harian";
+        $data['laporan'] = $this->model_barang->lap_harian($tanggal, $bulan, $tahun);
+        $this->load->view('manager/templates_m/header');
+
+        $this->load->view('manager/cetakLaporanHarian', $data);
+    }
+    public function cetak_lap_bulanan()
+    {
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+        $data = array(
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+        );
+        $data['title'] = "Laporan Harian";
+        $data['laporan'] = $this->model_barang->lap_bulanan($bulan, $tahun);
+        $this->load->view('manager/templates_m/header');
+        $this->load->view('manager/cetakLaporanBulanan', $data);
+    }
+    public function cetak_lap_tahunan()
+    {
+        $tahun = $this->input->post('tahun');
+        $data = array(
+            'tahun' => $tahun,
+        );
+        $data['title'] = "Laporan Tahunan";
+        $data['laporan'] = $this->model_barang->lap_tahunan($tahun);
+        $this->load->view('manager/templates_m/header');
+        $this->load->view('manager/cetakLaporanTahunan', $data);
+    }
 }

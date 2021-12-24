@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <?php $no = 1;
                             foreach ($barang as $brg) : ?>
-                                <form class="forms-sample" method="post" action="<?php echo base_url('admin/dataProduk/updateDataAksi') ?>" enctype="multipart/form-data">
+                                <form class="forms-sample" method="post" action="<?php echo base_url('admin/dataBarang/updateDataAksi') ?>" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Id Barang</label>
                                         <input type="text" name="id_barang" class="form-control" value="<?php echo $brg->id_barang ?>" readonly>
@@ -20,10 +20,7 @@
                                         <label>Brand</label>
                                         <input type="text" class="form-control" name="nama_barang" value="<?php echo $brg->nama_barang ?>">
                                     </div>
-                                    <div class="form-group">
-                                        <label>Brand</label>
-                                        <input type="text" class="form-control" name="brand" value="<?php echo $brg->brand ?>">
-                                    </div>
+                                   
                                     <div class="form-group">
                                         <label>Kategori</label>
                                         <select name="nama_kategori" class="form-control">

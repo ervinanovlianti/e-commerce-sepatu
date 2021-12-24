@@ -12,12 +12,22 @@
             redirect('welcome');
         }
     }
-        public function index()
-        {
-            $data['title'] = "Data Penjualan";
-            $this->load->view('admin/templates/header');
-            $this->load->view('admin/templates/sidebar');
-            $this->load->view('admin/dataPenjualan', $data);
-            $this->load->view('admin/templates/footer');
-        }
+        
+    public function index()
+    {
+        $tanggal = $this->input->post('tanggal');
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+        $data = array(
+            'tanggal' => $tanggal,
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+        );
+        $data['title'] = "Laporan Harian";
+        $data['laporan'] = $this->model_barang->lap_harian($tanggal, $bulan, $tahun);
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
+        $this->load->view('admin/dataPenjualan', $data);
+        $this->load->view('admin/templates/footer');
+    }
     }

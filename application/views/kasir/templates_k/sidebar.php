@@ -78,9 +78,9 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('kasir/inputPenjualan') ?>">
+            <a class="nav-link" href="<?php echo base_url('kasir/pesanan') ?>">
               <i class="menu-icon mdi mdi-cart"></i>
-              <span class="menu-title">Invoices</span>
+              <span class="menu-title">Pesanan</span>
             </a>
           </li>
           <li class="nav-item">

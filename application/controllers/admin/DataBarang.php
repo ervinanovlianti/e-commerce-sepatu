@@ -18,7 +18,7 @@ class DataBarang extends CI_Controller
     }
     public function index()
     {
-        $data['title'] = 'Data Semua Produk';
+        $data['title'] = 'Data Semua Barang';
         $data['barang'] = $this->model_barang->get_data('tb_barang')->result();
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/sidebar');
@@ -27,7 +27,7 @@ class DataBarang extends CI_Controller
     }
     public function detailData($id)
     {
-        $data['title'] = 'Detail Produk';
+        $data['title'] = 'Detail Barang';
         $this->load->model('model_barang');
         $detail = $this->model_barang->detail_data($id);
         $data['detail'] = $detail;

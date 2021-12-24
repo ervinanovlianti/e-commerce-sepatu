@@ -42,10 +42,6 @@
                                 <div class="mt-3">
                                     <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" href="">LOG IN</button>
                                 </div>
-
-                                <!-- <div class="text-center mt-4 fw-light">
-                                    Don't have an account? <a href="register.html" class="text-primary">Create</a>
-                                </div> -->
                             </form>
                         </div>
                     </div>

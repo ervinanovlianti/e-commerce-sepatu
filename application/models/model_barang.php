@@ -21,6 +21,21 @@
             $query = $this->db->get_where('tb_barang', array('id_barang' => $id))->row();
             return $query;
         }
+        public function stok_minim()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_barang');
+            $this->db->where('stok <=5');
+            return $this->db->get()->result();
+        }
+        public function barang_terjual()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
+            $this->db->join('tb_detail_pesanan', 'tb_pesanan.id = tb_detail_pesanan.id_pesanan');
+            $this->db->where('status_pesanan !=0');
+            return $this->db->get()->result();
+        }
         public function kodebarang()
         {
             $this->db->select('RIGHT(tb_barang.id_barang, 2) as id_barang', FALSE);
@@ -90,24 +105,6 @@
                 $kodeunik = "BRM"."-".$tgl."-".$batas; // format kode
                 return $kodeunik;
         }       
-        public function kodetransaksi()
-        {
-            $this->db->select('RIGHT(tb_transaksi.no_transaksi, 2) as no_transaksi', FALSE);
-            $this->db->order_by('no_transaksi','DESC');
-            $this->db->limit(1);
-            $query = $this->db->get('tb_transaksi');
-            if ($query->num_rows() <> 0) {
-                # cek kode jika telah tersedia
-                $data = $query->row();
-                $kode = intval($data->no_transaksi) + 1;
-            }else{
-                $kode = 1; //cek jika kode belum terdapat pada tabel
-            }
-                $tgl=date('Ymd');
-                $batas = str_pad($kode, 3, "0", STR_PAD_LEFT);
-                $kodeunik = "TRX"."-".$tgl."-".$batas; // format kode
-                return $kodeunik;
-        }       
         public function kodeuser()
         {
             $this->db->select('RIGHT(tb_user.id_user, 2) as id_user', FALSE);
@@ -130,7 +127,6 @@
         {
             $username = set_value('username');
             $password = set_value('password');
-
             $result = $this->db->where('username', $username)
             ->where('password', $password)
             ->limit(1)
@@ -141,7 +137,21 @@
                 return FALSE;
             }
         }
+        public function cek_login_pelanggan()
+        {
+            $email = set_value('email');
+            $password = set_value('password');
 
+            $result = $this->db->where('email', $email)
+            ->where('password', $password)
+            ->limit(1)
+                ->get('tb_pelanggan');
+            if ($result->num_rows() > 0) {
+                return $result->row();
+            } else {
+                return FALSE;
+            }
+        }
         public function find($id)
         {
             $result = $this->db->where('id_barang', $id)
@@ -153,5 +163,59 @@
                 return array();
             }
         }
+    
+        public function get_keyword($keyword)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_barang');
+            $this->db->like('nama_barang', $keyword);
+            $this->db->or_like('nama_kategori', $keyword);
+            $this->db->or_like('ukuran', $keyword);
+            return $this->db->get()->result();
+        }
+        public function sepatuPria()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_barang');
+            $this->db->where('nama_kategori', 'Sepatu Pria');
+            return $this->db->get()->result();
+        }
+        public function sepatuWanita()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_barang');
+            $this->db->where('nama_kategori', 'Sepatu Wanita');
+            return $this->db->get()->result();
+        }
+
+        public function lap_harian($tanggal, $bulan, $tahun)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
+            $this->db->join('tb_detail_pesanan', 'tb_pesanan.id = tb_detail_pesanan.id_pesanan');
+            $this->db->where('DAY(tb_pesanan.tanggal_pesan)', $tanggal);
+            $this->db->where('MONTH(tb_pesanan.tanggal_pesan)', $bulan);
+            $this->db->where('YEAR(tb_pesanan.tanggal_pesan)', $tahun);
+            return $this->db->get()->result();
+
+        }
+        public function lap_bulanan($bulan, $tahun)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
+            $this->db->where('MONTH(tb_pesanan.tanggal_pesan)', $bulan);
+            $this->db->where('YEAR(tb_pesanan.tanggal_pesan)', $tahun);
+            $this->db->where('status_pesanan != 0');
+            return $this->db->get()->result();
+
+        }
+        public function lap_tahunan($tahun)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
+            $this->db->where('YEAR(tb_pesanan.tanggal_pesan)', $tahun);
+            $this->db->where('status_pesanan != 0');
+            return $this->db->get()->result();
+
+        }
     }
-?>

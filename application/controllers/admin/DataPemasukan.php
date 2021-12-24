@@ -21,17 +21,6 @@
             $this->load->view('admin/dataPemasukan', $data);
             $this->load->view('admin/templates/footer');
         }
-    //     public function tambahData()
-    // {
-    //     $data['title'] = "Form Transaksi Barang Masuk";
-    //     $data['kode'] = $this->model_barang->kodebarangmasuk();
-    //     $data['kategori'] = $this->model_barang->get_data('tb_kategori')->result();
-    //     $data['supplier'] = $this->model_barang->get_data('tb_supplier')->result();
-    //     $this->load->view('admin/templates/header');
-    //     $this->load->view('admin/templates/sidebar');
-    //     $this->load->view('admin/tambahBarangBaru', $data);
-    //     $this->load->view('admin/templates/footer');
-    // }
     public function tambahStok()
     {
         $data['title'] = "Tambah Stok Barang";

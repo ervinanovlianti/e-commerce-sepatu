@@ -1,15 +1,14 @@
 <?php
 class Keranjang extends CI_Controller
 {
-   
     public function index()
     {
         $data['title'] = "Keranjang Belanja";
         $data['barang'] = $this->model_barang->get_data('tb_barang')->result();
-        $this->load->view('users/template/header');
-        $this->load->view('users/template/sidebar');
-        $this->load->view('users/keranjang', $data);
-        $this->load->view('users/template/footer');
+        $this->load->view('pelanggan/template/header');
+        $this->load->view('pelanggan/template/sidebar');
+        $this->load->view('pelanggan/keranjang', $data);
+        $this->load->view('pelanggan/template/footer');
     }
     public function tambahKeranjang($id)
     {
@@ -21,7 +20,7 @@ class Keranjang extends CI_Controller
             'name' => $barang->nama_barang
         );
         $this->cart->insert($data);
-        redirect('users/dashboard');
+        redirect('pelanggan/dashboard');
     }
     function updateItem()
     {
@@ -42,7 +41,7 @@ class Keranjang extends CI_Controller
 
         // Return response
         echo $update ? 'ok' : 'Data berhasil Di update';
-        redirect('users/keranjang');
+        redirect('pelanggan/keranjang');
     }
 
     function removeItem($rowid)
@@ -51,7 +50,7 @@ class Keranjang extends CI_Controller
         $remove = $this->cart->remove($rowid);
 
         // Redirect to the cart page
-        redirect('users/keranjang');
+        redirect('pelanggan/keranjang');
     }
     public function update($rowid)
     {
@@ -61,7 +60,7 @@ class Keranjang extends CI_Controller
         );
 
         $this->cart->update($data);
-        return redirect('user/keranjang');
+        return redirect('pelanggan/keranjang');
     }
     public function updated()
     {
@@ -74,12 +73,38 @@ class Keranjang extends CI_Controller
             $this->cart->update($data);
 
         }
-        return redirect('user/keranjang');
+        return redirect('pelanggan/keranjang');
     }
     public function hapusKeranjang($id)
     {
 
         $this->cart->destroy();
-        redirect('users/keranjang');
+        redirect('pelanggan/keranjang');
     }
+
+    public function pembayaran()
+    {
+        $this->load->view('pelanggan/template/header');
+        $this->load->view('pelanggan/template/sidebar');
+        $this->load->view('pelanggan/formPemesanan');
+        $this->load->view('pelanggan/template/footer');
+    }
+    public function inputPesanan()
+    {
+        $data['belum_bayar'] = $this->model_invoice->belum_bayar();
+        $data['diproses'] = $this->model_invoice->diproses();
+        $data['dikirim'] = $this->model_invoice->dikirim();
+        $data['selesai'] = $this->model_invoice->selesai();
+        $is_processed = $this->model_invoice->index();
+        if ($is_processed) {
+            $this->cart->destroy();
+            $this->load->view('pelanggan/template/header');
+            $this->load->view('pelanggan/template/sidebar');
+            $this->load->view('pelanggan/dataPesanan', $data);
+            $this->load->view('pelanggan/template/footer');
+        } else {
+            echo "Maaf Pesanan Anda gagal Di proses";
+        }
+    }
+    
 }

@@ -77,8 +77,8 @@
             </a>
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('manager/laporanPenjualan') ?>">Barang</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('manager/laporanPenjualan') ?>">Pemasukan</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('manager/laporanBarang') ?>">Barang</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('manager/laporanBarang/barangMasuk') ?>">Pemasukan</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('manager/laporanPenjualan') ?>">Penjualan</a></li>
               </ul>
             </div>

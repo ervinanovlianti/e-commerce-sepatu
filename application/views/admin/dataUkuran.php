@@ -10,7 +10,7 @@
             <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <a class="btn btn-outline-success" href=""> Tambah Ukuran </a>
+                        <!-- <a class="btn btn-outline-success" href=""> Tambah Ukuran </a> -->
                         <table class="table table-striped">
                             <thead>
                                 <tr class="text-center">

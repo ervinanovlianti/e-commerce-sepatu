@@ -22,7 +22,7 @@
                           </div>
                           <div>
                             <p class="statistics-title">Transaksi</p>
-                            <h3 class="rate-percentage text-center"><?php echo $transaksi ?></h3>
+                            <!-- <h3 class="rate-percentage text-center"><?php echo $transaksi ?></h3> -->
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Supplier</p>

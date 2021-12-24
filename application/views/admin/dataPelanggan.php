@@ -10,8 +10,6 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <!-- <h4 class="card-title">Data Supplier</h4> -->
-                        <a type="button" class="btn btn-outline-success" href="<?php echo base_url('admin/dataPelanggan/tambahData') ?>">Tambah Pelanggan</a>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
