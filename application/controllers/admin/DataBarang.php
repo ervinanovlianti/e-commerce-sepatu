@@ -44,6 +44,7 @@ class DataBarang extends CI_Controller
             ->get_data('tb_kategori')
             ->result();
         $data['ukuran'] = $this->model_barang->get_data('tb_ukuran')->result();
+        $data['supplier'] = $this->model_barang->get_data('tb_supplier')->result();
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/tambahDataBarang', $data);
@@ -58,7 +59,7 @@ class DataBarang extends CI_Controller
         $stok = $this->input->post('stok');
         $deskripsi = $this->input->post('deskripsi');
         $modal = $this->input->post('modal');
-        $harga_jual = $this->input->post('harga_jual');
+        $id_supplier = $this->input->post('id_supplier');
         $foto = $_FILES['foto']['name'];
         if ($foto = '') {
         } else {
@@ -82,6 +83,7 @@ class DataBarang extends CI_Controller
             'deskripsi'     => $deskripsi,
             'modal'         => $modal,
             'harga_jual'    => $modal * 1.2,
+            'id_supplier'   => $id_supplier,
             'foto'          => $foto,
         ];
         $this->model_barang->insert_data($data, 'tb_barang');
@@ -111,6 +113,7 @@ class DataBarang extends CI_Controller
         $stok = $this->input->post('stok');
         $deskripsi = $this->input->post('deskripsi');
         $modal = $this->input->post('modal');
+        $id_supplier = $this->input->post('id_supplier');
         $foto = $_FILES['foto']['name'];
         if ($foto = '') {
         } else {
@@ -133,6 +136,7 @@ class DataBarang extends CI_Controller
             'stok' => $stok,
             'deskripsi' => $deskripsi,
             'modal' => $modal,
+            'id_supplier' => $id_supplier,
             'foto' => $foto,
         ];
 
@@ -142,10 +146,14 @@ class DataBarang extends CI_Controller
         $this->model_barang->update_data('tb_barang', $data, $where);
         redirect('admin/dataBarang');
     }
+   
     public function deleteData($idbarang)
     {
         $where = ['id_barang' => $idbarang];
         $this->model_barang->delete_data($where, 'tb_barang');
         redirect('admin/dataBarang');
     }
+
+
+   
 }

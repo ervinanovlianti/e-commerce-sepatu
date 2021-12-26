@@ -15,18 +15,23 @@ class Dashboard extends CI_Controller{
     }
     public function index()
     {
+        $data['barang_terjual'] = $this->model_barang->barang_terjual();
+
         $barang = $this->db->query("SELECT * FROM tb_barang");
         $barang_masuk= $this->db->query("SELECT * FROM tb_barang_masuk");
         $supplier = $this->db->query("SELECT * FROM tb_supplier");
         $pelanggan = $this->db->query("SELECT * FROM tb_pelanggan");
+        $transaksi = $this->db->query("SELECT * FROM tb_pesanan");
+
         $data['barang'] = $barang->num_rows();
         $data['barangmasuk'] = $barang_masuk->num_rows();
         $data['supplier'] = $supplier->num_rows();
         $data['pelanggan'] = $pelanggan->num_rows();
+        $data['transaksi'] = $transaksi->num_rows();
+
         $this->load->view('manager/templates_m/header');
         $this->load->view('manager/templates_m/sidebar');
         $this->load->view('manager/dashboard', $data);
         $this->load->view('manager/templates_m/footer');
-
     }
 }

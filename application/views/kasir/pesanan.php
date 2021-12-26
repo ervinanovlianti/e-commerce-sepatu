@@ -35,7 +35,7 @@
                                         <td>
                                             <h5 class="fw-bold">Rp. <?php echo number_format($inv->total, 0, ',', '.') ?><br></h5>
 
-                                            <?php if (empty($inv->bukti_pembayaran)) { ?>
+                                            <?php if ($inv->status_bayar == 0) { ?>
                                                 <span class="badge rounded-pill bg-warning">Belum Bayar</span>
                                             <?php } else { ?>
                                                 <span class="badge rounded-pill bg-success">Sudah Bayar</span>
@@ -44,15 +44,16 @@
                                             <?php } ?>
                                         </td>
                                         <td>
-                                            <?php if (empty($inv->bukti_pembayaran)) { ?>
-                                            <?php } else { ?>
+                                            <?php if ($inv->status_bayar == 1) { ?>
                                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#cek<?= $inv->id  ?>">
                                                     Cek Bukti
                                                 </button>
-
                                                 <a class="btn btn-success" href="<?php echo base_url('kasir/pesanan/prosesPesanan/' . $inv->id) ?>">Proses</a>
                                                 <a class="btn btn-primary" href="<?php echo base_url('kasir/pesanan/detail/' . $inv->id) ?>">Detail</a>
                                             <?php } ?>
+
+
+
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -149,7 +150,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Id Pesanan : <?= $ip->id ?></h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Kode Pesanan : <?= $ip->kode_pesanan ?></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -188,16 +189,12 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Id Pesanan : <?= $inv->id ?></h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Kode Pesanan : <strong><?= $inv->kode_pesanan ?></strong></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <table class="table">
-                            <tr>
-                                <th>Jenis Pembayaran</th>
-                                <th>:</th>
-                                <td><?= $inv->jenis_pembayaran ?></td>
-                            </tr>
+
                             <tr>
                                 <th>No Rekening</th>
                                 <th>:</th>
@@ -206,23 +203,18 @@
                             <tr>
                                 <th>Atas Nama</th>
                                 <th>:</th>
-                                <td><?= $inv->nama ?></td>
+                                <td><?= $inv->atas_nama ?></td>
                             </tr>
                             <tr>
                                 <th>Bukti Pembayaran</th>
                                 <th>:</th>
                             </tr>
-
-
                         </table>
-
-                        <img src="<?php echo base_url('assets/bukti_pembayaran/' . $inv->bukti_pembayaran) ?>" class="img-fluid"><?php  ?>
-
+                        <img src="<?php echo base_url('assets/bukti_pembayaran/' . $inv->bukti_bayar) ?>" class="img-fluid"><?php  ?>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
                     </div>
-
                 </div>
             </div>
         </div>

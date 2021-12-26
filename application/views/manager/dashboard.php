@@ -12,6 +12,26 @@
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="statistics-details d-flex align-items-center justify-content-between">
+                          <div class="d-none d-md-block">
+                            <p class="statistics-title">Pemasukan</p>
+                            <h3 class="rate-percentage text-center">
+                              <?php
+                                $grand_total = 0;
+
+                              foreach ($barang_terjual as $key => $value)
+                              $tot_harga = $value->total;
+                              $grand_total = $grand_total + $tot_harga;
+                              { ?>
+                                <div class="badge rounded-pill bg-primary">
+                                  Rp. <?php echo number_format($grand_total) ?>
+                                </div>
+                              <?php } ?>
+                            </h3>
+                          </div>
+                          <div>
+                            <p class="statistics-title">Transaksi</p>
+                            <h3 class="rate-percentage text-center"><?php echo $transaksi ?></h3>
+                          </div>
                           <div>
                             <p class="statistics-title">Semua Barang</p>
                             <h3 class="rate-percentage text-center"><?php echo $barang ?></h3>
@@ -20,10 +40,7 @@
                             <p class="statistics-title">Barang Masuk</p>
                             <h3 class="rate-percentage text-center"><?php echo $barangmasuk ?></h3>
                           </div>
-                          <div>
-                            <p class="statistics-title">Transaksi</p>
-                            <!-- <h3 class="rate-percentage text-center"><?php echo $transaksi ?></h3> -->
-                          </div>
+
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Supplier</p>
                             <h3 class="rate-percentage text-center"><?php echo $supplier ?></h3>
@@ -32,10 +49,7 @@
                             <p class="statistics-title">Pelanggan</p>
                             <h3 class="rate-percentage text-center"><?php echo $pelanggan ?></h3>
                           </div>
-                          <div class="d-none d-md-block">
-                            <p class="statistics-title">User</p>
-                            <h3 class="rate-percentage text-center">2m:35s</h3>
-                          </div>
+
                         </div>
                       </div>
                     </div>

@@ -34,9 +34,13 @@
                             <h6 class="fw-light">Silahkan Login Terlebih Dahulu.</h6>
                             <form class="pt-3" method="POST" action="<?php echo base_url('login') ?>">
                                 <div class="form-group">
+                                    <label for="">Email</label>
+
                                     <input type="email" class="form-control form-control-lg" placeholder="Email" name="email">
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Password</label>
+
                                     <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
                                 </div>
                                 <div class="mt-3">
@@ -44,7 +48,7 @@
                                 </div>
 
                                 <div class="text-center mt-4 fw-light">
-                                    Don't have an account? <a href="<?php echo base_url('welcome/register') ?>" class="text-primary">Create</a>
+                                    Belum Punya Akun? <a href="<?php echo base_url('login/register') ?>" class="text-primary">Create</a>
                                 </div>
                             </form>
                         </div>

@@ -2,7 +2,7 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <div class="card-title">Data Pesanan</div>
+                <div class="card-title">Data Transaksi</div>
                 <div class="card-body">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -13,6 +13,7 @@
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
+                        <!-- <?php echo $this->session->flashdata('msg') ?> -->
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <table class="table table-striped table-hover">
                                 <tr>
@@ -37,7 +38,7 @@
                                         <td><?php echo $br->batas_bayar ?></td>
                                         <td>
                                             <h5 class="fw-bold">Rp.<?php echo number_format($br->total, 0, ',', '.') ?></h5>
-                                            <?php if (empty($br->bukti_pembayaran)) { ?>
+                                            <?php if ($br->status_bayar == 0) { ?>
                                                 <span class="badge rounded-pill bg-warning">Belum Bayar</span>
                                             <?php } else { ?>
                                                 <span class="badge rounded-pill bg-success">Sudah Bayar</span>
@@ -47,11 +48,9 @@
                                         </td>
                                         <td>
                                             <center>
-                                                <?php if (empty($br->bukti_pembayaran)) { ?>
+                                                <?php if (empty($br->bukti_bayar)) { ?>
                                                     <a class="btn btn-primary" href="<?php echo base_url('pelanggan/transaksi/pembayaran/' . $br->id) ?>">Bayar</a>
-                                                    <!-- <a class="btn btn-danger" onclick="" href="<?php echo base_url('pelanggan/transaksi/pembayaran/' . $br->id) ?>">Batal</a> -->
-                                                <?php } else { ?>
-                                                    <!-- <button class="btn btn-success">Detail</button> -->
+                                                    <a class="btn btn-danger" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')" href="<?php echo base_url('pelanggan/transaksi/pesananBatal/' . $br->id) ?>">Batalkan</a>
                                                 <?php } ?>
                                             </center>
                                         </td>
@@ -109,7 +108,7 @@
                                             <h5><?= $dk->no_resi ?> </h5>
                                         </td>
                                         <td>
-                                            <a class="btn btn-success" href="<?php echo base_url('pelanggan/transaksi/pesananSelesai/' . $dk->id) ?>">Diterima</a>
+                                            <a class="btn btn-success" onclick="return confirm('Yakin Telah Menerima Pesanan Ini?')" href="<?php echo base_url('pelanggan/transaksi/pesananSelesai/' . $dk->id) ?>">Diterima</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

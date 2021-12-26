@@ -3,15 +3,15 @@
         <div class="card" style="margin-bottom: 10px;">
             <div class="card-body">
                 <div class="card-title">Detail Pesanan
-                    <div class="btn btn-success">No. Invoice: <?php echo $invoice->id ?></div>
+                    <div class="btn btn-success">Kode Pesanan: <?php echo $invoice->kode_pesanan ?></div>
                 </div>
                 <table class="table table-bordered table-hover table-striped">
                     <tr>
-                        <th>Id Produk</th>
-                        <th>NAMA PRODUK</th>
-                        <th>JUMLAH PESANAN</th>
-                        <th>HARGA SATUAN</th>
-                        <th>SUB TOTAL</th>
+                        <th>Id Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Jumlah</th>
+                        <th>Harga</th>
+                        <th>Sub Total</th>
                     </tr>
                     <?php
                     $total = 0;

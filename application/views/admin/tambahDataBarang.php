@@ -57,10 +57,18 @@
                   <input type="hidden" class="form-control" name="harga_jual" required>
                 </div>
                 <div class="form-group">
+                  <label for="">Id Supplier</label>
+                  <select name="id_supplier" class="form-control">
+                    <option value="">--Pilih Supplier--</option>
+                    <?php foreach ($supplier as $sp) : ?>
+                      <option value="<?php echo $sp->id_supplier ?>"><?php echo $sp->nama_supplier ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                </div>
+                <div class="form-group">
                   <label>Foto</label>
                   <input type="file" class="form-control" name="foto" required>
                 </div>
-
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
               </form>
             </div>

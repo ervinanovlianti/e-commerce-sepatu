@@ -45,9 +45,8 @@
                     </tr>
                     <tr>
                       <td colspan="6" align="right">
-                        <a class="btn btn-info me-4" href="">Update</a>
                         <a class="btn btn-warning me-4" href="<?php echo base_url('pelanggan/dashboard') ?>">Lanjut Belanja</a>
-                        <a class="btn btn-success" href="<?php echo base_url('pelanggan/keranjang/pembayaran') ?>">Check Out</a>
+                        <a class="btn btn-success" href="<?php echo base_url('pelanggan/keranjang/pesan') ?>">Check Out</a>
                       </td>
                     </tr>
                   </tbody>

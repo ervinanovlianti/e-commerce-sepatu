@@ -75,9 +75,9 @@
             return $this->db->get()->result();
         }
 
-        public function ambil_id_invoice($id_pesanan)
+        public function ambil_id_invoice($id)
         {
-            $result = $this->db->where('id', $id_pesanan)->limit(1)->get('tb_pesanan');
+            $result = $this->db->where('id', $id)->limit(1)->get('tb_pesanan');
             if ($result->num_rows() > 0) {
                 return $result->row();
             }else{
@@ -98,38 +98,46 @@
             $this->db->where('id', $data['id']);
             $this->db->update('tb_pesanan', $data);     
         }
-
+        public function upload_buktibayar($data)
+        {
+            $this->db->where('id', $data['id']);
+            $this->db->update('tb_pesanan', $data);     
+        }
+        public function pesanan_batal($id)
+        {
+            $this->db->query("DELETE tb_pesanan, tb_detail_pesanan FROM tb_pesanan, tb_detail_pesanan 
+            WHERE tb_pesanan.id=tb_detail_pesanan.id_pesanan AND tb_pesanan.id= $id");
+            
+        }
     //Admin
-    public function pesanan_baru()
-    {
-        $this->db->select('*');
-        $this->db->from('tb_pesanan');
-        $this->db->join('tb_pembayaran', 'tb_pesanan.id=tb_pembayaran.id_pesanan');
-        $this->db->where('status_pesanan = 0');
-        return $this->db->get()->result();
-    }
-    public function pesanan_diproses()
-    {
-        $this->db->select('*');
-        $this->db->from('tb_pesanan');
-        $this->db->where('status_pesanan = 1',);
-        return $this->db->get()->result();
-    }
-    public function pesanan_dikirim()
-    {
-        $this->db->select('*');
-        $this->db->from('tb_pesanan');
+        public function pesanan_baru()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
+            $this->db->where('status_pesanan = 0');
+            return $this->db->get()->result();
+        }
+        public function pesanan_diproses()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
+            $this->db->where('status_pesanan = 1',);
+            return $this->db->get()->result();
+        }
+        public function pesanan_dikirim()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
 
-        $this->db->where('status_pesanan = 2',);
-        return $this->db->get()->result();
-    }
-    public function pesanan_selesai()
-    {
-        $this->db->select('*');
-        $this->db->from('tb_pesanan');
-        $this->db->where('status_pesanan = 3',);
-        return $this->db->get()->result();
-    }
+            $this->db->where('status_pesanan = 2',);
+            return $this->db->get()->result();
+        }
+        public function pesanan_selesai()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
+            $this->db->where('status_pesanan = 3',);
+            return $this->db->get()->result();
+        }
 
     }
-?>

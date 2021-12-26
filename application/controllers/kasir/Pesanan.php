@@ -29,23 +29,7 @@
             $this->load->view('kasir/templates_k/footer');
             
         }
-        public function prosesP($id_pesanan)
-        {
-            $data = array(
-                'id'    => $id_pesanan,
-                'status_pesanan' => '1',
-            );
-            $this->model_invoice->update_pesanan($data);
-            
-            $this->session->set_flashdata('msg', '<div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
-                                        <span class="badge badge-pill badge-primary">Success</span>
-                                        You successfully read this important alert.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>');
-            redirect('kasir/pesanan');
-        }
+        
         public function prosesPesanan($id_pesanan)
         {
             $data = array(

@@ -34,9 +34,11 @@
                             <h6 class="fw-light">Silahkan Login Terlebih Dahulu.</h6>
                             <form class="pt-3" method="POST" action="<?php echo base_url('welcome') ?>">
                                 <div class="form-group">
+                                    <label for="">Username</label>
                                     <input type="text" class="form-control form-control-lg" placeholder="Username" name="username">
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Password</label>
                                     <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
                                 </div>
                                 <div class="mt-3">

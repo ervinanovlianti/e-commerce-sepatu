@@ -17,11 +17,14 @@ class Dashboard extends CI_Controller{
     {
         $data['stok_minim'] = $this->model_barang->stok_minim();
         $data['barang_terjual'] = $this->model_barang->barang_terjual();
+        $data['barang_masuk'] = $this->model_barang->barang_masuk();
+
         $barang = $this->db->query("SELECT * FROM tb_barang");
         $barang_masuk= $this->db->query("SELECT * FROM tb_barang_masuk");
         $supplier = $this->db->query("SELECT * FROM tb_supplier");
         $pelanggan = $this->db->query("SELECT * FROM tb_pelanggan");
         $user = $this->db->query("SELECT * FROM tb_user");
+        
         $data['barang'] = $barang->num_rows();
         $data['barangmasuk'] = $barang_masuk->num_rows();
         $data['supplier'] = $supplier->num_rows();

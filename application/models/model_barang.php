@@ -4,12 +4,15 @@
             return $this->db->get($table);
         }
         public function insert_data($data, $table){
-            // $this->ukuran = implode(',', $this->input->post('ukuran', true));
             $this->db->insert($table, $data);
         }
 
         public function update_data($table, $data, $where){
             $this->db->update($table, $data, $where);
+        }
+        public function update_pembayaran($id){
+            $this->db->where('id', $id);
+            $this->db->update('tb_pesanan');
         }
         public function delete_data($where, $table)
         {
@@ -20,6 +23,12 @@
         {
             $query = $this->db->get_where('tb_barang', array('id_barang' => $id))->row();
             return $query;
+        }
+        public function barang_masuk()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_barang_masuk');
+            return $this->db->get()->result();
         }
         public function stok_minim()
         {
@@ -33,6 +42,7 @@
             $this->db->select('*');
             $this->db->from('tb_pesanan');
             $this->db->join('tb_detail_pesanan', 'tb_pesanan.id = tb_detail_pesanan.id_pesanan');
+            $this->db->join('tb_barang', 'tb_barang.id_barang = tb_detail_pesanan.id_barang');
             $this->db->where('status_pesanan !=0');
             return $this->db->get()->result();
         }
@@ -197,7 +207,6 @@
             $this->db->where('MONTH(tb_pesanan.tanggal_pesan)', $bulan);
             $this->db->where('YEAR(tb_pesanan.tanggal_pesan)', $tahun);
             return $this->db->get()->result();
-
         }
         public function lap_bulanan($bulan, $tahun)
         {
@@ -207,7 +216,6 @@
             $this->db->where('YEAR(tb_pesanan.tanggal_pesan)', $tahun);
             $this->db->where('status_pesanan != 0');
             return $this->db->get()->result();
-
         }
         public function lap_tahunan($tahun)
         {
@@ -216,6 +224,18 @@
             $this->db->where('YEAR(tb_pesanan.tanggal_pesan)', $tahun);
             $this->db->where('status_pesanan != 0');
             return $this->db->get()->result();
+        }
 
+        public function kategori_sepatu()
+        {
+            $this->db->group_by('nama_kategori');
+            $this->db->select('nama_kategori');
+            $this->db->select("count(*) as total");
+            return $this->db->from('tb_barang')->get()->result();
+        }
+        public function graph()
+        {
+            $data = $this->db->query("SELECT * FROM tb_barang");
+            return $data->result();
         }
     }

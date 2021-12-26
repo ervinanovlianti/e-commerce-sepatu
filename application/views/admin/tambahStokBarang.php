@@ -20,20 +20,11 @@
                                     <input type="date" class="form-control" name="tanggal_masuk">
                                 </div>
                                 <div class="form-group">
-                                    <label>Id Supplier</label>
-                                    <select class="form-control" name="id_supplier">
-                                        <option>--Pilih Supplier--</option>
-                                        <?php foreach ($supplier as $s) : ?>
-                                            <option value="<?php echo $s->id_supplier ?>"><?php echo $s->id_supplier ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label>Kode Barang</label>
                                     <select class="form-control" name="id_barang">
                                         <option>--Pilih Barang--</option>
                                         <?php foreach ($barang as $b) : ?>
-                                            <option value="<?php echo $b->id_barang ?>"><?php echo $b->id_barang ?></option>
+                                            <option value="<?php echo $b->id_barang ?>"><?php echo $b->nama_barang ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>

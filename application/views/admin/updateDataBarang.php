@@ -20,7 +20,7 @@
                                         <label>Brand</label>
                                         <input type="text" class="form-control" name="nama_barang" value="<?php echo $brg->nama_barang ?>">
                                     </div>
-                                   
+
                                     <div class="form-group">
                                         <label>Kategori</label>
                                         <select name="nama_kategori" class="form-control">
@@ -42,6 +42,15 @@
                                     <div class="form-group">
                                         <label>Harga Beli</label>
                                         <input type="number" class="form-control" name="modal" value="<?php echo $brg->modal ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Id Supplier</label>
+                                        <select name="id_supplier" class="form-control">
+                                            <option value="<?php echo $brg->id_supplier ?>"><?php echo $brg->id_supplier ?></option>
+                                            <?php foreach ($supplier as $sp) : ?>
+                                                <option value="<?php echo $sp->id_supplier ?>"><?php echo $sp->nama_supplier ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Foto</label>

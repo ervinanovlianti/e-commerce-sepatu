@@ -22,7 +22,6 @@
                   <th>Id Pemasukan</th>
                   <th>Id Barang</th>
                   <th>Jumlah Masuk</th>
-                  <th>Supplier</th>
                   <th>Keterangan</th>
                   <th>Aksi</th>
                 </tr>
@@ -36,7 +35,6 @@
                     <td><?php echo $bm->id_barangmasuk ?></td>
                     <td><?php echo $bm->id_barang ?></td>
                     <td><span class="badge rounded-pill bg-success"><?php echo $bm->stok ?></span></td>
-                    <td><?php echo $bm->id_supplier ?></td>
                     <td><span class="badge rounded-pill bg-warning"><?php echo $bm->keterangan ?></td>
                     <td>
                       <center>

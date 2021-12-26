@@ -19,15 +19,7 @@
                                         <label>Tanggal Masuk</label>
                                         <input type="date" class="form-control" name="tanggal_masuk" value="<?php echo $bm->tanggal_masuk ?>">
                                     </div>
-                                    <div class="form-group">
-                                        <label>Id Supplier</label>
-                                        <select class="form-control" name="id_supplier">
-                                            <option value="<?php echo $bm->id_supplier ?>"><?php echo $bm->id_supplier ?></option>
-                                            <?php foreach ($supplier as $s) : ?>
-                                                <option value="<?php echo $s->id_supplier ?>"><?php echo $s->id_supplier ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label>Kode Barang</label>
                                         <select class="form-control" name="id_barang">

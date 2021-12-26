@@ -32,17 +32,24 @@
                             </div>
                             <h4>Selamat Datang</h4>
                             <h6 class="fw-light">Silahkan Registrasi Akun Terlebih Dahulu.</h6>
-                            <form class="pt-3" method="POST" action="<?php echo base_url('welcome/registerAksi') ?>">
+                            <form class="pt-3" method="POST" action="<?php echo base_url('login/registerAksi') ?>">
                                 <div class="form-group">
-                                    <input type="hidden" class="form-control form-control-lg"  name="id_pelanggan" value="<?php echo $kode; ?>">
+
+                                    <input type="hidden" class="form-control form-control-lg" name="id_pelanggan" value="<?php echo $kode; ?>">
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Nama Lengkap</label>
+
                                     <input type="text" class="form-control form-control-lg" placeholder="Nama Lengkap Anda" name="nama_pelanggan">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" placeholder="Username" name="email">
+                                    <label for="">E-mail</label>
+
+                                    <input type="email" class="form-control form-control-lg" placeholder="Username" name="email">
                                 </div>
                                 <div class="form-group">
+                                    <label for="">Password</label>
+
                                     <input type="password" class="form-control form-control-lg" placeholder="Password" name="password">
                                 </div>
                                 <div class="mt-3">
@@ -50,7 +57,7 @@
                                 </div>
 
                                 <div class="text-center mt-4 fw-light">
-                                    have an account? <a href="<?php echo base_url('login') ?>" class="text-primary">Login</a>
+                                    Sudah Punya Akun?<a href="<?php echo base_url('login') ?>" class="text-primary">Login</a>
                                 </div>
                             </form>
                         </div>

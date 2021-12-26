@@ -10,7 +10,7 @@
                             Silahkan Transfer Uang Ke No. Rekening Di Bawah Ini Sebesar :
                         </div>
                         <div class="card-body">
-                            <h1 class="text-primary">Rp. <?php echo $invoice->total ?></h1>
+                            <h1 class="text-primary">Rp. <?php echo number_format($invoice->total, 0) ?></h1>
                         </div>
                         <table class="table bordered table-striped">
                             <?php  ?>
@@ -21,12 +21,12 @@
                             </tr>
                             <tr>
                                 <td>BRI</td>
-                                <td>88818181818</td>
+                                <td>1234-1234-1234</td>
                                 <td>Ervina Novlianti</td>
                             </tr>
                             <tr>
                                 <td>BNI</td>
-                                <td>1234567890</td>
+                                <td>4321-4321-4321</td>
                                 <td>Ervina Novlianti</td>
                             </tr>
                             <tr>
@@ -46,36 +46,35 @@
             <div class="col-6 grid-margin center-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title">Konfirmasi Pembayaran</div>
-                        <form class="forms-sample" method="post" action="<?php echo base_url('pelanggan/transaksi/bayar') ?>" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <!-- <label>No. Invoice</label> -->
-                                <input type="hidden" class="form-control" name="id_pesanan" value="<?php echo $invoice->id ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="">Jenis Pembayaran</label>
-                                <select class="form-control" name="jenis_pembayaran">
-                                    <option selected>Pilih Jenis Pembayaran Anda</option>
-                                    <option value="BRI-xxxxxxxxx">BRI-xxxxxxxx</option>
-                                    <option value="BNI">BNI-xxxxxxxx</option>
-                                    <option value="DANA-081234567890">DANA-081234567890</option>
-                                    <option value="GOPAY-081234567890">GOPAY-081234567890</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>No Rekening</label>
-                                <input type="text" class="form-control" name="no_rekening">
-                            </div>
-                            <div class="form-group">
-                                <label>Atas Nama</label>
-                                <input type="text" class="form-control" name="nama">
-                            </div>
-                            <div class="form-group">
-                                <label>Upload Bukti Transfer</label>
-                                <input type="file" class="form-control" name="bukti_pembayaran">
-                            </div>
-                            <button type="submit" class="btn btn-primary me-2">Submit</button>
-                        </form>
+                        <?php echo $this->session->flashdata('pesan') ?>
+                        <div class="card-title">Upload Bukti Pembayaran</div>
+                        <?php echo form_open_multipart('pelanggan/transaksi/bayar/' . $invoice->id) ?>
+                        <div class="form-group">
+                            <label for="">Jenis Pembayaran</label>
+                            <select class="form-control" name="">
+                                <option selected>Pilih Jenis Pembayaran Anda</option>
+                                <option value="BRI-xxxxxxxxx">BRI-1234-1234-1234</option>
+                                <option value="BNI">BNI-4321-4321-4321</option>
+                                <option value="DANA-081234567890">DANA-081234567890</option>
+                                <option value="GOPAY-081234567890">GOPAY-081234567890</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>No Rekening</label>
+                            <input type="text" class="form-control" name="no_rekening" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Atas Nama</label>
+                            <input type="text" class="form-control" name="atas_nama" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Upload Bukti Transfer</label>
+                            <input type="file" class="form-control" name="bukti_bayar" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                        <a type="" href="<?php echo base_url('pelanggan/transaksi') ?>" class="btn btn-success">Kembali</a>
+                        <?php form_close() ?>
                     </div>
                 </div>
             </div>

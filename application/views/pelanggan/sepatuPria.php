@@ -10,6 +10,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $sp->nama_barang ?></h5>
                         <p>Rp. <?php echo number_format($sp->harga_jual, 0, ',', '.') ?></p>
+                        <p><span class="badge rounded-pill bg-success"><?php echo $sp->ukuran ?></span></p>
                         <a class="btn btn-sm btn-danger" href="<?php echo base_url('pelanggan/keranjang/tambahKeranjang/' . $sp->id_barang) ?>"><i class="mdi mdi-cart-plus"></i></a>
                         <a class="btn btn-sm btn-info" href="<?php echo base_url('pelanggan/dashboard/detailData/' . $sp->id_barang) ?>"><i class="mdi mdi-apps"> Details</i></a>
                     </div>

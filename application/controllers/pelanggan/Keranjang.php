@@ -22,57 +22,19 @@ class Keranjang extends CI_Controller
         $this->cart->insert($data);
         redirect('pelanggan/dashboard');
     }
-    function updateItem()
-    {
-        $update = 0;
-
-        // Get cart item info
-        $rowid = $this->input->get('rowid');
-        $qty = $this->input->get('qty');
-
-        // Update item in the cart
-        if (!empty($rowid) && !empty($qty)) {
-            $data = array(
-                'rowid' => $rowid,
-                'qty'   => $qty
-            );
-            $update = $this->cart->update($data);
-        }
-
-        // Return response
-        echo $update ? 'ok' : 'Data berhasil Di update';
-        redirect('pelanggan/keranjang');
-    }
-
     function removeItem($rowid)
     {
-        // Remove item from cart
         $remove = $this->cart->remove($rowid);
-
-        // Redirect to the cart page
         redirect('pelanggan/keranjang');
     }
-    public function update($rowid)
+    public function update($id)
     {
         $data=array(
-            'rowid'=>$rowid,
+            'id'=>$id,
             'qty'=> $this->input->post('qty')
         );
 
         $this->cart->update($data);
-        return redirect('pelanggan/keranjang');
-    }
-    public function updated()
-    {
-        $i =1;
-        foreach($this->cart->contents() as $items){
-            $data = array(
-                'rowid' => $items['rowid'],
-                'qty'   => $this->request->getPost('qty'.$i++)
-            );
-            $this->cart->update($data);
-
-        }
         return redirect('pelanggan/keranjang');
     }
     public function hapusKeranjang($id)
@@ -82,7 +44,7 @@ class Keranjang extends CI_Controller
         redirect('pelanggan/keranjang');
     }
 
-    public function pembayaran()
+    public function pesan()
     {
         $this->load->view('pelanggan/template/header');
         $this->load->view('pelanggan/template/sidebar');
