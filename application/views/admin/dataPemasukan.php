@@ -9,6 +9,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
+              <?= $this->session->flashdata('msg_stok')  ?>
           <!-- Tambah Data Barang Baru -->
           <a class="btn btn-success " href="<?php echo base_url('admin/dataBarang/tambahData') ?>"> Tambah Baru </a>
           <!-- Tambah Stok Barang Yang sudah Terdaftar -->
@@ -34,7 +35,7 @@
                     <td><?php echo $bm->tanggal_masuk ?></td>
                     <td><?php echo $bm->id_barangmasuk ?></td>
                     <td><?php echo $bm->id_barang ?></td>
-                    <td><span class="badge rounded-pill bg-success"><?php echo $bm->stok ?></span></td>
+                    <td><span class="badge rounded-pill bg-success">+<?php echo $bm->stok ?></span></td>
                     <td><span class="badge rounded-pill bg-warning"><?php echo $bm->keterangan ?></td>
                     <td>
                       <center>

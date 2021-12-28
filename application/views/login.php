@@ -30,6 +30,14 @@
                             <div class="brand-logo">
                                 <h3 class="text-center fw-bold">Sepatu Kita</h3>
                             </div>
+                            <?= $this->session->flashdata('pesan')  ?>
+
+                            <!-- <?php if ($this->session->flashdata('pesan')) { ?>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <?= $this->session->flashdata('pesan')  ?>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            <?php } ?> -->
                             <h4>Selamat Datang</h4>
                             <h6 class="fw-light">Silahkan Login Terlebih Dahulu.</h6>
                             <form class="pt-3" method="POST" action="<?php echo base_url('welcome') ?>">

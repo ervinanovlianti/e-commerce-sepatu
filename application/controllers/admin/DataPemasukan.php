@@ -4,11 +4,10 @@
     {
         parent::__construct();
         if ($this->session->userdata('hak_akses') != '1') {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Anda belum login!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span>
-                    </button>
-                </div>');
+            $this->session->set_flashdata(
+                'pesan',
+                'Anda belum login!!!'
+            );
             redirect('welcome');
         }
     }
@@ -46,6 +45,10 @@
             'keterangan'        => $keterangan,
         );
         $this->model_barang->insert_data($data, 'tb_barang_masuk');
+        $this->session->set_flashdata('msg_stok', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                    Stok barang berhasil ditambah
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>');
         redirect('admin/dataPemasukan');
     }
     
@@ -79,6 +82,11 @@
                 'id_barangmasuk' => $id
             );
             $this->model_barang->update_data('tb_barang_masuk', $data, $where);
+        $this->session->set_flashdata('msg_stok', '<div class="alert alert-info alert-dismissible fade show" role="alert">
+                                                    Stok barang berhasil diupdate
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>');
+
             redirect('admin/dataPemasukan');
         }
 
@@ -86,6 +94,11 @@
     {
         $where = array('id_barangmasuk' => $id);
         $this->model_barang->delete_data($where, 'tb_barang_masuk');
+        $this->session->set_flashdata('msg_stok', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    Stok barang berhasil dihapus
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>');
+
         redirect('admin/dataPemasukan');
     }
     }

@@ -20,36 +20,6 @@ class Transaksi extends CI_Controller
         $this->load->view('pelanggan/formPembayaran', $data);
         $this->load->view('pelanggan/template/footer');
     }
-    public function bayars($id)
-    {
-        $this->form_validation->set_rules('no_rekening', 'No Rekening', 'required', array('required' => '%s Harus Diisi !!!'));
-        $this->form_validation->set_rules('atas_nama', 'Atas Nama', 'required', array('required' => '%s Harus Diisi !!!'));
-        $this->form_validation->set_rules('bukti_bayar', 'Bukti Bayar', 'required', array('required' => '%s Harus Diisi !!!'));
-
-        if ($this->form_validation->run() == TRUE) {
-            $config['upload_path'] = './assets/bukti_pembayaran';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $this->upload->initialize($config);
-            $field_name = 'bukti_bayar';
-            if (!$this->upload->do_upload($field_name)) {
-                redirect('pelanggan/transaksi');
-            } else {
-                $upload_data = array('uploads' => $this->upload->data());
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = './assets/bukti_pembayaran/' . $upload_data['upload']['file_name'];
-                $this->load->library('image_lib', $config);
-                $data = array(
-                    'id' => $id,
-                    'no_rekening' => $this->input->post('no_rekening'),
-                    'atas_nama' => $this->input->post('atas_nama'),
-                    'bukti_bayar' => $upload_data['uploads']['file_name'],
-                    'status_bayar' => '1',
-                );
-                $this->model_invoice->upload_buktibayar($data);
-                $this->session->set_flashdata('pesan', 'Bukti Pembayaran Berhasil diupload');
-            }
-        }
-    }
     public function bayar($id)
     {
             // $jenis_pembayaran = $this->input->post('jenis_pembayaran');
@@ -77,6 +47,10 @@ class Transaksi extends CI_Controller
                 'status_bayar' => '1', 
             ];
             $this->model_invoice->upload_buktibayar($data);
+        $this->session->set_flashdata('msg_pay', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                    Bukti Pembayaran Berhasil diupload
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>');
             redirect('pelanggan/transaksi');
         }
     public function pesananSelesai($id_pesanan)

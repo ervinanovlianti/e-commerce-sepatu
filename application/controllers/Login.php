@@ -17,10 +17,9 @@ class Login extends CI_Controller {
             $cek = $this->model_barang->cek_login_pelanggan($email, $password);
             if ($cek == FALSE) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					<strong>Username atau Password Salah</strong>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-					</button>
-				</div>');
+                                    Email atau Password salah
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>');
                 redirect('login');
             } else {
                 $this->session->set_userdata('nama_pelanggan', $cek->nama_pelanggan);
@@ -50,6 +49,10 @@ class Login extends CI_Controller {
             'password'  => $password,
         );
         $this->model_barang->insert_data($data, 'tb_pelanggan');
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    Registrasi akun berhasil!!!
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>');
         redirect('login');
     }
     public function _rules_pelanggan()

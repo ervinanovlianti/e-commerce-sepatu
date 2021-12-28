@@ -18,6 +18,19 @@
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Setting
+                                </a>
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a class="dropdown-item" href="<?php echo base_url('admin/gantiPassword') ?>">Ganti Password</a></li>
+                                    <li><a class="dropdown-item" href="#">Update</a></li>
+                                </ul>
+                            </div>
+                        </div>
                         <div class="card-title">
                             Biodata User
                         </div>
@@ -48,25 +61,9 @@
                             </tr>
                             <tr>
                             </tr>
-
                         </table>
-
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 grid-margin stretch-card">
-                <div class="card">
-
-                    <div class="card-body">
-                        <div class="card-title">
-                            Pengaturan
-                        </div>
-                        <button class="btn btn-info">Update Data</button>
-                        <button class="btn btn-primary">Ganti Password</button>
-                    </div>
-                </div>
-            </div>
-
         </div>
-
     </div>

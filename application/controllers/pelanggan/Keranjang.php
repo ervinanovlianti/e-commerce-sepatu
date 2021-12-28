@@ -33,13 +33,11 @@ class Keranjang extends CI_Controller
             'id'=>$id,
             'qty'=> $this->input->post('qty')
         );
-
         $this->cart->update($data);
         return redirect('pelanggan/keranjang');
     }
     public function hapusKeranjang($id)
     {
-
         $this->cart->destroy();
         redirect('pelanggan/keranjang');
     }

@@ -4,14 +4,11 @@ class DataBarang extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
         if ($this->session->userdata('hak_akses') != '1') {
             $this->session->set_flashdata(
                 'pesan',
-                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Anda belum login!</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;</span>
-                    </button>
-                </div>'
+                'Anda belum login!!!'
             );
             redirect('welcome');
         }
@@ -65,7 +62,6 @@ class DataBarang extends CI_Controller
         } else {
             $config['upload_path'] = './assets/foto';
             $config['allowed_types'] = 'jpg|jpeg|png|gif';
-
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('foto')) {
                 echo 'Gambar Gagal Di Upload';
@@ -73,7 +69,6 @@ class DataBarang extends CI_Controller
                 $foto = $this->upload->data('file_name');
             }
         }
-
         $data = [
             'id_barang'     => $id_barang,
             'nama_barang'   => $nama_barang,
@@ -87,6 +82,10 @@ class DataBarang extends CI_Controller
             'foto'          => $foto,
         ];
         $this->model_barang->insert_data($data, 'tb_barang');
+        $this->session->set_flashdata('msg_new','<div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                    Barang baru berhasil ditambah
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>');
         redirect('admin/dataBarang');
     }
     public function updateData($id)
@@ -127,7 +126,6 @@ class DataBarang extends CI_Controller
                 $foto = $this->upload->data('file_name');
             }
         }
-
         $data = [
             'id_barang' => $id_barang,
             'nama_barang' => $nama_barang,
@@ -139,21 +137,24 @@ class DataBarang extends CI_Controller
             'id_supplier' => $id_supplier,
             'foto' => $foto,
         ];
-
         $where = [
             'id_barang' => $id_barang,
         ];
         $this->model_barang->update_data('tb_barang', $data, $where);
+        $this->session->set_flashdata('msg_new', '<div class="alert alert-info alert-dismissible fade show" role="alert">
+                                                    Barang berhasil diupdate
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>');
         redirect('admin/dataBarang');
     }
-   
     public function deleteData($idbarang)
     {
         $where = ['id_barang' => $idbarang];
         $this->model_barang->delete_data($where, 'tb_barang');
+        $this->session->set_flashdata('msg_new', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    Barang berhasil dihapus
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>');
         redirect('admin/dataBarang');
     }
-
-
-   
 }

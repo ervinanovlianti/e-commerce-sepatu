@@ -115,6 +115,8 @@ class DataUser extends CI_Controller
             'id_user' => $id
         );
         $this->model_barang->update_data('tb_user', $data, $where);
+        $this->session->set_flashdata('pesan', 'User berhasil ditambah');
+
         redirect('admin/dataUser');
     }
 
@@ -122,6 +124,8 @@ class DataUser extends CI_Controller
     {
         $where = array('id_user' => $id);
         $this->model_barang->delete_data($where, 'tb_user');
+        $this->session->set_flashdata('pesan', 'User berhasil dihapus');
+
         redirect('admin/dataUser');
     }
 }

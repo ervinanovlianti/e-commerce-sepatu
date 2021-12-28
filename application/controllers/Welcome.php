@@ -18,10 +18,9 @@ class Welcome extends CI_Controller {
             $cek = $this->model_barang->cek_login($username, $password);
             if ($cek == FALSE) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					<strong>Username atau Password Salah</strong>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
-					</button>
-				</div>');
+                                    Username atau Password salah
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>');
                 redirect('welcome');
             } else {
                 $this->session->set_userdata('hak_akses', $cek->hak_akses);

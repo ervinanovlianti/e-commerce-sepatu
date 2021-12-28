@@ -57,6 +57,8 @@ class DataSupplier extends CI_Controller{
                 'foto_supplier'    => $foto,
             );
             $this->model_barang->insert_data($data, 'tb_supplier');
+            $this->session->set_flashdata('pesan', 'Data supplier berhasil ditambah');
+
             redirect('admin/dataSupplier');
         }
     }
@@ -101,6 +103,8 @@ class DataSupplier extends CI_Controller{
                 'id_supplier' => $id
             );
             $this->model_barang->update_data('tb_supplier', $data, $where);
+            $this->session->set_flashdata('pesan', 'Data Supplier berhasil diupdate');
+
             redirect('admin/dataSupplier');
         }            
         

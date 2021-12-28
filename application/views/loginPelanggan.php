@@ -30,6 +30,7 @@
                             <div class="brand-logo">
                                 <h3 class="text-center fw-bold">Sepatu Kita</h3>
                             </div>
+                            <?= $this->session->flashdata('pesan')  ?>
                             <h4>Selamat Datang</h4>
                             <h6 class="fw-light">Silahkan Login Terlebih Dahulu.</h6>
                             <form class="pt-3" method="POST" action="<?php echo base_url('login') ?>">

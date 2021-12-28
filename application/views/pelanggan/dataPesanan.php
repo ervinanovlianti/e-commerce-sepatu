@@ -4,6 +4,8 @@
             <div class="card-body">
                 <div class="card-title">Data Transaksi</div>
                 <div class="card-body">
+                    <?= $this->session->flashdata('msg_pay')  ?>
+
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pesanan Saya</button>
