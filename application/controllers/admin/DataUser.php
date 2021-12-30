@@ -34,14 +34,14 @@ class DataUser extends CI_Controller
     public function tambahDataAksi()
     {
         if ($_POST) {
-            $id     = $this->input->post('id_user');
+            $id         = $this->input->post('id_user');
             $nama       = $this->input->post('nama');
-            $username         = $this->input->post('username');
-            $password         = $this->input->post('password');
-            $role         = $this->input->post('role');
+            $username   = $this->input->post('username');
+            $password   = $this->input->post('password');
+            $role       = $this->input->post('role');
             $jk         = $this->input->post('jk');
-            $hak_akses         = $this->input->post('hak_akses');
-            $foto           = $_FILES['foto_user']['name'];
+            $hak_akses  = $this->input->post('hak_akses');
+            $foto       = $_FILES['foto_user']['name'];
             if ($foto = '') {
             } else {
                 $config['upload_path'] = './assets/foto_user';
@@ -80,15 +80,15 @@ class DataUser extends CI_Controller
     }
     public function updateDataAksi()
     {
-        $id     = $this->input->post('id_user');
+        $id         = $this->input->post('id_user');
         $nama       = $this->input->post('nama');
-        $username         = $this->input->post('username');
-        $password         = $this->input->post('password');
-        $role         = $this->input->post('role');
+        $username   = $this->input->post('username');
+        $password   = $this->input->post('password');
+        $role       = $this->input->post('role');
         $jk         = $this->input->post('jk');
-        $hak_akses         = $this->input->post('hak_akses');
+        $hak_akses  = $this->input->post('hak_akses');
 
-        $foto           = $_FILES['foto_user']['name'];
+        $foto       = $_FILES['foto_user']['name'];
         if ($foto = '') {
         } else {
             $config['upload_path'] = './assets/foto_user';

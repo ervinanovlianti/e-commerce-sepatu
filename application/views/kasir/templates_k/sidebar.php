@@ -33,12 +33,6 @@
               <input type="text" class="form-control">
             </div>
           </li>
-          <!-- <li class="nav-item">
-            <form class="search-form" action="#">
-              <i class="icon-search"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-            </form>
-          </li> -->
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
             <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
               <img class="img-xs rounded-circle" src="<?php echo  base_url('assets/foto_user/') . $this->session->userdata('foto_user') ?>" alt="Profile image"> </a>
@@ -48,7 +42,7 @@
                 <p class="mb-1 mt-3 font-weight-semibold"><?php echo $this->session->userdata('nama') ?></p>
                 <p class="fw-light text-muted mb-0"><?php echo $this->session->userdata('username') ?></p>
               </div>
-              <a class="dropdown-item" href="<?php echo base_url('userProfil') ?>"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile </a>
+              <a class="dropdown-item" href="<?php echo base_url('kasir/userProfil') ?>"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile </a>
               <a class="dropdown-item" href="<?php echo base_url('welcome/logout') ?>"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Log Out</a>
             </div>
           </li>

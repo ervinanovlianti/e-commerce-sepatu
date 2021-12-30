@@ -7,6 +7,7 @@
         <div class="card-body">
           <div class="row">
             <h4 class="card-title">Detail Produk</h4>
+
             <div class="col-md-3">
               <img src="<?php echo base_url('assets/foto/' . $detail->foto) ?>" class="card-img-top">
             </div>
@@ -35,7 +36,7 @@
                 <tr>
                   <td>Harga</td>
                   <td>:</td>
-                  <td><strong><?php echo $detail->harga_jual ?></strong></td>
+                  <td><strong>Rp <?php echo number_format($detail->harga_jual) ?></strong></td>
                 </tr>
               </table>
             </div>

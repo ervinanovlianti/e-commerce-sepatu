@@ -35,7 +35,6 @@ class LaporanPenjualan extends CI_Controller
         $data['title'] = "Laporan Harian";
         $data['laporan'] = $this->model_barang->lap_harian($tanggal, $bulan, $tahun);
         $this->load->view('admin/templates/header');
-
         $this->load->view('admin/cetakLaporanHarian', $data);
     }
     public function cetak_lap_bulanan()

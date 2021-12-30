@@ -49,31 +49,29 @@ class DataBarang extends CI_Controller
     }
     public function tambahDataAksi()
     {
-        $id_barang = $this->input->post('id_barang');
-        $nama_barang = $this->input->post('nama_barang');
-        $nama_kategori = $this->input->post('nama_kategori');
-        $ukuran = $this->input->post('ukuran');
-        $stok = $this->input->post('stok');
-        $deskripsi = $this->input->post('deskripsi');
-        $modal = $this->input->post('modal');
-        $id_supplier = $this->input->post('id_supplier');
-        $foto = $_FILES['foto']['name'];
+        $id_barang                    = $this->input->post('id_barang');
+        $nama_barang                  = $this->input->post('nama_barang');
+        $nama_kategori                = $this->input->post('nama_kategori');
+        $stok                         = $this->input->post('stok');
+        $deskripsi                    = $this->input->post('deskripsi');
+        $modal                        = $this->input->post('modal');
+        $id_supplier                  = $this->input->post('id_supplier');
+        $foto                         = $_FILES['foto']['name'];
         if ($foto = '') {
         } else {
-            $config['upload_path'] = './assets/foto';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+            $config['upload_path']    = './assets/foto';
+            $config['allowed_types']  = 'jpg|jpeg|png|gif';
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload('foto')) {
                 echo 'Gambar Gagal Di Upload';
             } else {
-                $foto = $this->upload->data('file_name');
+                $foto                 = $this->upload->data('file_name');
             }
         }
         $data = [
             'id_barang'     => $id_barang,
             'nama_barang'   => $nama_barang,
             'nama_kategori' => $nama_kategori,
-            'ukuran'        => $ukuran,
             'stok'          => $stok,
             'deskripsi'     => $deskripsi,
             'modal'         => $modal,
@@ -82,22 +80,34 @@ class DataBarang extends CI_Controller
             'foto'          => $foto,
         ];
         $this->model_barang->insert_data($data, 'tb_barang');
-        $this->session->set_flashdata('msg_new','<div class="alert alert-success alert-dismissible fade show" role="alert">
+        $this->session->set_flashdata('msg_new', '<div class="alert alert-success alert-dismissible fade show" role="alert">
                                                     Barang baru berhasil ditambah
                                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                 </div>');
+        $barang_id = $this->db->insert_id();
+        $ukuran = count($this->input->post('ukuran[]'));
+        for ($i=0; $i < $ukuran ; $i++) { 
+            $datas[$i] = array(
+                'barang_id' => $id_barang ,
+                'ukuran'    => $this->input->post('ukuran['.$i.']')
+            );
+            $this->db->insert('tb_ukuran', $datas[$i]);
+        }
+       
         redirect('admin/dataBarang');
     }
     public function updateData($id)
     {
-        $where = ['id_barang' => $id];
-        $data['title'] = 'Form Update Data Barang';
-        $data['barang'] = $this->db
+        $where            = ['id_barang' => $id];
+        $data['title']    = 'Form Update Data Barang';
+        $data['barang']   = $this->db
             ->query("SELECT * FROM tb_barang WHERE id_barang='$id'")
             ->result();
         $data['kategori'] = $this->model_barang
             ->get_data('tb_kategori')
             ->result();
+        $data['supplier'] = $this->model_barang->get_data('tb_supplier')->result();
+
         $this->load->view('admin/templates/header', $data);
         $this->load->view('admin/templates/sidebar');
         $this->load->view('admin/updateDataBarang', $data);
@@ -105,37 +115,35 @@ class DataBarang extends CI_Controller
     }
     public function updateDataAksi()
     {
-        $id_barang = $this->input->post('id_barang');
-        $nama_barang = $this->input->post('nama_barang');
-        $nama_kategori = $this->input->post('nama_kategori');
-        $ukuran = $this->input->post('ukuran');
-        $stok = $this->input->post('stok');
-        $deskripsi = $this->input->post('deskripsi');
-        $modal = $this->input->post('modal');
-        $id_supplier = $this->input->post('id_supplier');
-        $foto = $_FILES['foto']['name'];
-        if ($foto = '') {
-        } else {
-            $config['upload_path'] = './assets/foto';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $id_barang                    = $this->input->post('id_barang');
+        $nama_barang                  = $this->input->post('nama_barang');
+        $nama_kategori                = $this->input->post('nama_kategori');
+        $stok                         = $this->input->post('stok');
+        $deskripsi                    = $this->input->post('deskripsi');
+        $modal                        = $this->input->post('modal');
+        // $id_supplier                  = $this->input->post('id_supplier');
+        // $foto                         = $_FILES['foto']['name'];
+        // if ($foto = '') {
+        // } else {
+        //     $config['upload_path']    = './assets/foto';
+        //     $config['allowed_types']  = 'jpg|jpeg|png|gif';
 
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('foto')) {
-                echo 'Gambar Gagal Di Upload';
-            } else {
-                $foto = $this->upload->data('file_name');
-            }
-        }
+        //     $this->load->library('upload', $config);
+        //     if (!$this->upload->do_upload('foto')) {
+        //         echo 'Gambar Gagal Di Upload';
+        //     } else {
+        //         $foto                 = $this->upload->data('file_name');
+        //     }
+        // }
         $data = [
             'id_barang' => $id_barang,
             'nama_barang' => $nama_barang,
             'nama_kategori' => $nama_kategori,
-            'ukuran' => $ukuran,
             'stok' => $stok,
             'deskripsi' => $deskripsi,
             'modal' => $modal,
-            'id_supplier' => $id_supplier,
-            'foto' => $foto,
+            // 'id_supplier' => $id_supplier,
+            // 'foto' => $foto,
         ];
         $where = [
             'id_barang' => $id_barang,

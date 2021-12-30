@@ -19,7 +19,6 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $brg->nama_barang ?></h5>
                                         <p>Price : Rp. <?php echo number_format($brg->harga_jual, 0, ',', '.') ?></p>
-                                        <p>Size :<span class="badge rounded-pill bg-success"><?php echo $brg->ukuran ?></span></p>
                                         <p>Stok :
                                             <?php if ($brg->stok != 0) { ?>
                                                 <span class="badge rounded-pill bg-info"><?php echo $brg->stok ?></span>

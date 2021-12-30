@@ -31,14 +31,18 @@
                 <div class="form-group">
                   <label for="">Ukuran</label>
                   <div class="form-group">
-                    <?php foreach ($ukuran as $sz) : ?>
-                      <div class="form-check-inline">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input" name="ukuran" value="<?php echo $sz->ukuran ?>">
-                          <?php echo $sz->ukuran ?>
-                        </label>
-                      </div>
-                    <?php endforeach; ?>
+                    <div class="form-check-inline">
+                      <?php
+                        $mulai = 35;
+                        for ($i = $mulai; $i < $mulai + 11; $i++) {
+                          echo '<input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="ukuran[]" value="' . $i . '">'; 
+                          echo '&nbsp &nbsp';
+                          echo '<label class="form-check-label" for="inlineCheckbox1">' . $i . '</label>';
+                        echo '&nbsp &nbsp';
+
+                      }
+                        ?>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">

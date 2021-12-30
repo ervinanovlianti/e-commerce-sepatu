@@ -14,7 +14,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Laporan Harian</h4>
-                            <?php echo form_open('admin/dataPenjualan') ?>
+                            <?php echo form_open('admin/laporanPenjualan/cetak_lap_harian') ?>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">

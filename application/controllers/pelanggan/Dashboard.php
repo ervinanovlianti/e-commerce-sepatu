@@ -5,6 +5,7 @@ class Dashboard extends CI_Controller{
     public function index()
     {
         $data['barang'] = $this->db->query("SELECT * FROM tb_barang ORDER BY id_barang DESC")->result();
+        $data['ukuran'] = $this->model_barang->get_databarang();
         $this->load->view('pelanggan/template/header');
         $this->load->view('pelanggan/template/sidebar');
         $this->load->view('pelanggan/dashboard', $data);

@@ -11,7 +11,7 @@
         <div class="card-body">
               <?= $this->session->flashdata('msg_stok')  ?>
           <!-- Tambah Data Barang Baru -->
-          <a class="btn btn-success " href="<?php echo base_url('admin/dataBarang/tambahData') ?>"> Tambah Baru </a>
+          <!-- <a class="btn btn-success " href="<?php echo base_url('admin/dataBarang/tambahData') ?>"> Tambah Baru </a> -->
           <!-- Tambah Stok Barang Yang sudah Terdaftar -->
           <a class="btn btn-success" href="<?php echo base_url('admin/dataPemasukan/tambahStok') ?>"> Tambah Stok </a>
           <div class="table-responsive">

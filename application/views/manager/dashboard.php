@@ -17,15 +17,15 @@
                             <h3 class="rate-percentage text-center">
                               <?php
                                 $grand_total = 0;
-
-                              foreach ($barang_terjual as $key => $value)
-                              $tot_harga = $value->total;
-                              $grand_total = $grand_total + $tot_harga;
-                              { ?>
+                                foreach ($barang_terjual as $key => $value) {
+                                    $tot_harga = $value->total;
+                                    $grand_total = $grand_total + $tot_harga;
+                               ?>
+                               <?php } ?>
                                 <div class="badge rounded-pill bg-primary">
                                   Rp. <?php echo number_format($grand_total) ?>
                                 </div>
-                              <?php } ?>
+                              
                             </h3>
                           </div>
                           <div>

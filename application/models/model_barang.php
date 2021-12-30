@@ -19,10 +19,21 @@
             $this->db->where($where);
             $this->db->delete($table);
         }
+        public function get_databarang()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_barang');
+            $this->db->join('tb_ukuran', 'tb_barang.id_barang = tb_ukuran.barang_id');
+            return $this->db->get()->result();
+        }
         public function detail_data($id = NULL)
         {
-            $query = $this->db->get_where('tb_barang', array('id_barang' => $id))->row();
-            return $query;
+            $this->db->select('*');
+            $this->db->from('tb_barang');
+            $this->db->join('tb_ukuran', 'tb_barang.id_barang = tb_ukuran.barang_id');
+            $this->db->where('id_barang', $id);
+            return $this->db->get()->row();
+
         }
         public function barang_masuk()
         {
@@ -43,6 +54,13 @@
             $this->db->from('tb_pesanan');
             $this->db->join('tb_detail_pesanan', 'tb_pesanan.id = tb_detail_pesanan.id_pesanan');
             $this->db->join('tb_barang', 'tb_barang.id_barang = tb_detail_pesanan.id_barang');
+            $this->db->where('status_pesanan !=0');
+            return $this->db->get()->result();
+        }
+        public function pemasukan()
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
             $this->db->where('status_pesanan !=0');
             return $this->db->get()->result();
         }
@@ -132,7 +150,6 @@
                 $kodeunik = "USR"."-".$batas; // format kode
                 return $kodeunik;
         }
-
         public function cek_login()
         {
             $username = set_value('username');
@@ -180,7 +197,6 @@
             $this->db->from('tb_barang');
             $this->db->like('nama_barang', $keyword);
             $this->db->or_like('nama_kategori', $keyword);
-            $this->db->or_like('ukuran', $keyword);
             return $this->db->get()->result();
         }
         public function sepatuPria()
@@ -232,10 +248,5 @@
             $this->db->select('nama_kategori');
             $this->db->select("count(*) as total");
             return $this->db->from('tb_barang')->get()->result();
-        }
-        public function graph()
-        {
-            $data = $this->db->query("SELECT * FROM tb_barang");
-            return $data->result();
         }
     }

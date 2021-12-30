@@ -11,25 +11,32 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- <a class="btn btn-outline-success" href=""> Tambah Ukuran </a> -->
-                        <table class="table table-striped">
+                        <table class="table table-striped table-bordered">
                             <thead>
                                 <tr class="text-center">
                                     <th>No</th>
+                                    <th>Nama Barang</th>
                                     <th>Jenis Ukuran</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1;
-                                foreach ($ukuran as $u) : ?>
-                                    <tr class="text-center">
-                                        <td><?php echo $no++ ?></td>
-                                        <td><?php echo $u->ukuran ?></td>
+                                foreach ($ukuran as $key => $value) { ?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $value->nama_barang ?></td>
+                                        <td>
+                                                <?php echo $value->ukuran ?>
+                                        </td>
                                     </tr>
-                                <?php endforeach; ?>
+                                <?php } ?>
+
+
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
+            
         </div>
         <!-- content-wrapper ends -->

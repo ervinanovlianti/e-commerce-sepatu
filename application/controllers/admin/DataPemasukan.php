@@ -65,7 +65,7 @@
     }
     public function updateDataAksi()
     {
-        $id         = $this->input->post('id_barangmasuk');
+        $id                     = $this->input->post('id_barangmasuk');
         $tanggal_masuk          = $this->input->post('tanggal_masuk');
         $id_barang              = $this->input->post('id_barang');
         $stok                   = $this->input->post('stok');

@@ -19,7 +19,7 @@
                         <th>Foto</th>
                         <th>Kode Barang</th>
                         <th>Nama Barang</th>
-                        <th>Ukuran</th>
+                        <!-- <th>Ukuran</th> -->
                         <th>Stok</th>
                         <th>Harga Beli</th>
                         <th>Harga Jual</th>
@@ -35,9 +35,8 @@
                           <td><?php echo $no++ ?></td>
                           <td><img src="<?php echo base_url('assets/foto/' . $brg->foto) ?>"></td>
                           <td><?php echo $brg->id_barang ?></td>
-
                           <td><?php echo $brg->nama_barang ?></td>
-                          <td><?php echo $brg->ukuran ?></td>
+                          <!-- <td><?php echo $brg->ukuran ?></td> -->
                           <td><span class="badge rounded-pill bg-success"><?php echo $brg->stok ?></span></td>
                           <!-- <td><?php echo $brg->deskripsi ?></td> -->
                           <td>Rp.<?php echo number_format($brg->modal, 0, ',', '.') ?></td>

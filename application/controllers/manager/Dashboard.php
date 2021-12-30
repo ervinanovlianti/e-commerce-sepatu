@@ -15,7 +15,7 @@ class Dashboard extends CI_Controller{
     }
     public function index()
     {
-        $data['barang_terjual'] = $this->model_barang->barang_terjual();
+        $data['barang_terjual'] = $this->model_barang->pemasukan();
 
         $barang = $this->db->query("SELECT * FROM tb_barang");
         $barang_masuk= $this->db->query("SELECT * FROM tb_barang_masuk");

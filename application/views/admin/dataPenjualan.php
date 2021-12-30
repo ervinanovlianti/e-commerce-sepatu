@@ -84,7 +84,6 @@
                         <th>HARGA</th>
                         <th>JUMLAH</th>
                         <th>PELANGGAN</th>
-                        <th>SUB TOTAL</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -99,15 +98,7 @@
                           <td><?php echo $lp->harga ?></td>
                           <td><?php echo $lp->jumlah ?></td>
                           <td><?php echo $lp->nama_pelanggan ?></td>
-                          <td>
-                            <?php if (empty($lp->bukti_pembayaran)) { ?>
-                              <span class="badge rounded-pill bg-warning">Belum Bayar</span>
-                            <?php } else { ?>
-                              <span class="badge rounded-pill bg-success">Sudah Bayar</span>
-                              <br><br>
-                              <span class="badge rounded-pill bg-warning">Menunggu Konfirmasi</span>
-                            <?php } ?>
-                          </td>
+                          
                         </tr>
                       <?php endforeach; ?>
                     </tbody>

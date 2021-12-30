@@ -60,8 +60,6 @@ class Transaksi extends CI_Controller
             'status_pesanan' => '3',
         );
         $this->model_invoice->update_pesanan($data);
-
-        $this->session->set_flashdata('msg', 'Pesanan Berhasil Di Kirim');
         redirect('pelanggan/transaksi');
     }
     public function pesananBatal($id)

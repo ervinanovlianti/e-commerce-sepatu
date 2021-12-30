@@ -3,8 +3,8 @@ class Keranjang extends CI_Controller
 {
     public function index()
     {
-        $data['title'] = "Keranjang Belanja";
-        $data['barang'] = $this->model_barang->get_data('tb_barang')->result();
+        $data['title']          = "Keranjang Belanja";
+        $data['barang']         = $this->model_barang->get_data('tb_barang')->result();
         $this->load->view('pelanggan/template/header');
         $this->load->view('pelanggan/template/sidebar');
         $this->load->view('pelanggan/keranjang', $data);
@@ -12,8 +12,8 @@ class Keranjang extends CI_Controller
     }
     public function tambahKeranjang($id)
     {
-        $barang = $this->model_barang->find($id);
-        $data = array(
+        $barang                 = $this->model_barang->find($id);
+        $data                   = array(
             'id' => $barang->id_barang,
             'qty' => 1,
             'price' => $barang->harga_jual,
@@ -24,12 +24,12 @@ class Keranjang extends CI_Controller
     }
     function removeItem($rowid)
     {
-        $remove = $this->cart->remove($rowid);
+        $remove                 = $this->cart->remove($rowid);
         redirect('pelanggan/keranjang');
     }
     public function update($id)
     {
-        $data=array(
+        $data                   = array(
             'id'=>$id,
             'qty'=> $this->input->post('qty')
         );
@@ -51,11 +51,11 @@ class Keranjang extends CI_Controller
     }
     public function inputPesanan()
     {
-        $data['belum_bayar'] = $this->model_invoice->belum_bayar();
-        $data['diproses'] = $this->model_invoice->diproses();
-        $data['dikirim'] = $this->model_invoice->dikirim();
-        $data['selesai'] = $this->model_invoice->selesai();
-        $is_processed = $this->model_invoice->index();
+        $data['belum_bayar']    = $this->model_invoice->belum_bayar();
+        $data['diproses']       = $this->model_invoice->diproses();
+        $data['dikirim']        = $this->model_invoice->dikirim();
+        $data['selesai']        = $this->model_invoice->selesai();
+        $is_processed           = $this->model_invoice->index();
         if ($is_processed) {
             $this->cart->destroy();
             $this->load->view('pelanggan/template/header');
