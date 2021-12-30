@@ -86,8 +86,6 @@ class DataUser extends CI_Controller
         $password   = $this->input->post('password');
         $role       = $this->input->post('role');
         $jk         = $this->input->post('jk');
-        $hak_akses  = $this->input->post('hak_akses');
-
         $foto       = $_FILES['foto_user']['name'];
         if ($foto = '') {
         } else {
@@ -108,7 +106,6 @@ class DataUser extends CI_Controller
             'password'  => $password,
             'role'    => $role,
             'jk'    => $jk,
-            'hak_akses'    => $hak_akses,
             'foto_user'    => $foto,
         );
         $where = array(
