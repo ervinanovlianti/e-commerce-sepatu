@@ -15,9 +15,9 @@
                         <table class="table bordered table-striped">
                             <?php  ?>
                             <tr>
-                                <th>Bank</th>
-                                <th>No. Rekening</th>
-                                <th>Atas Nama</th>
+                                <th>Bank / Akun</th>
+                                <th>No. Rekening / No. Akun</th>
+                                <th>Atas Nama / Nama Akun</th>
                             </tr>
                             <tr>
                                 <td>BRI</td>
@@ -50,22 +50,21 @@
                         <div class="card-title">Upload Bukti Pembayaran</div>
                         <?php echo form_open_multipart('pelanggan/transaksi/bayar/' . $invoice->id) ?>
                         <div class="form-group">
-                            <label for="">Jenis Pembayaran</label>
-                            <select class="form-control" name="">
-                                <option selected>Pilih Jenis Pembayaran Anda</option>
-                                <option value="BRI-xxxxxxxxx">BRI-1234-1234-1234</option>
-                                <option value="BNI">BNI-4321-4321-4321</option>
+                            <label for="">Bank/Akun Tujuan Transfer</label>
+                            <select class="form-control" name="tujuan">
+                                <option selected>--Pilih Bank/Akun Tujuan Pembayaran Anda--</option>
+                                <option value="BRI-1234-1234-1234">BRI-1234-1234-1234</option>
+                                <option value="BNI-4321-4321-4321">BNI-4321-4321-4321</option>
                                 <option value="DANA-081234567890">DANA-081234567890</option>
                                 <option value="GOPAY-081234567890">GOPAY-081234567890</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>No Rekening</label>
+                            <label>No Rekening/ No. Akun Pengirim</label>
                             <input type="text" class="form-control" name="no_rekening" required>
-
                         </div>
                         <div class="form-group">
-                            <label>Atas Nama</label>
+                            <label>Atas Nama/ Nama Akun Pengirim</label>
                             <input type="text" class="form-control" name="atas_nama" required>
                         </div>
                         <div class="form-group">

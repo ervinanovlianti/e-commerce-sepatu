@@ -76,7 +76,6 @@
             <div class="collapse" id="master">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/dataKategori') ?>">Kategori</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/dataUkuran') ?>">Ukuran</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/dataSupplier') ?>">Supplier</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/dataPelanggan') ?>">Pelanggan</a></li>
                 <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('admin/dataUser') ?>">User</a></li>

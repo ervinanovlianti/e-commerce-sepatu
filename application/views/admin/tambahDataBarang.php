@@ -61,7 +61,7 @@
                   <input type="hidden" class="form-control" name="harga_jual" required>
                 </div>
                 <div class="form-group">
-                  <label for="">Id Supplier</label>
+                  <label for="">Nama Supplier</label>
                   <select name="id_supplier" class="form-control">
                     <option value="">--Pilih Supplier--</option>
                     <?php foreach ($supplier as $sp) : ?>

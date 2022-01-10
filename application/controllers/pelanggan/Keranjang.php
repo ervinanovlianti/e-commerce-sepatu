@@ -10,32 +10,39 @@ class Keranjang extends CI_Controller
         $this->load->view('pelanggan/keranjang', $data);
         $this->load->view('pelanggan/template/footer');
     }
-    public function tambahKeranjang($id)
+    public function add()
     {
-        $barang                 = $this->model_barang->find($id);
-        $data                   = array(
-            'id' => $barang->id_barang,
-            'qty' => 1,
-            'price' => $barang->harga_jual,
-            'name' => $barang->nama_barang
+        $redirect_page = $this->input->post('redirect_page');
+        $data = array(
+            'id' => $this->input->post('id'),
+            'qty'=> $this->input->post('qty'),
+            'price'=> $this->input->post('price'),
+            'name'=> $this->input->post('name'),
+            'size'=> $this->input->post('size'),
         );
         $this->cart->insert($data);
-        redirect('pelanggan/dashboard');
+        redirect($redirect_page);
+    }
+    public function update()
+    {
+        $i = 1;
+
+        foreach ($this->cart->contents() as $items) {
+            $data = array(
+                'rowid' => $items['rowid'],
+                'qty'   => $this->input->post($i . '[qty]')
+            );
+            $this->cart->update($data);
+            $i++;
+        }
+        return redirect('pelanggan/keranjang');
     }
     function removeItem($rowid)
     {
         $remove                 = $this->cart->remove($rowid);
         redirect('pelanggan/keranjang');
     }
-    public function update($id)
-    {
-        $data                   = array(
-            'id'=>$id,
-            'qty'=> $this->input->post('qty')
-        );
-        $this->cart->update($data);
-        return redirect('pelanggan/keranjang');
-    }
+   
     public function hapusKeranjang($id)
     {
         $this->cart->destroy();
@@ -66,5 +73,4 @@ class Keranjang extends CI_Controller
             echo "Maaf Pesanan Anda gagal Di proses";
         }
     }
-    
 }

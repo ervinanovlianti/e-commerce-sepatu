@@ -19,10 +19,7 @@
                       <p class="statistics-title">Barang Masuk</p>
                       <h3 class="rate-percentage text-center"><?php echo $barangmasuk ?></h3>
                     </div>
-                    <!-- <div>
-                      <p class="statistics-title">Transaksi</p>
-                      <h3 class="rate-percentage text-center"><?php echo $transaksi ?></h3>
-                    </div> -->
+                    
                     <div class="d-none d-md-block">
                       <p class="statistics-title">Supplier</p>
                       <h3 class="rate-percentage text-center"><?php echo $supplier ?></h3>

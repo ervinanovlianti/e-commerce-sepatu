@@ -1,47 +1,56 @@
-<div class="main-panel">
-  <div class="content-wrapper">
-    <div class="col-sm-12">
-      <div class="home-tab">
-        <h2 class="text-center"> <?php echo $title ?> </h2>
-      </div>
-      <hr>
-    </div>
-  </div>
+ <table class="table table-striped" cellpadding="6" cellspacing="1" style="width:100%" border="0">
 
+                  <tr>
+                    <th>QTY</th>
+                    <th>Item Description</th>
+                    <th style="text-align:right">Item Price</th>
+                    <th style="text-align:right">Sub-Total</th>
+                  </tr>
 
-  <div class="row">
-    <?php foreach ($barang as $b) : ?>
-      <div class="col-md-3 grid-margin stretch-card">
-        <div class="card">
+                  <?php $i = 1; ?>
 
-          <img src="<?php echo base_url('assets/foto/' . $b->foto) ?>" class="card-img-top" style="width: 50;"><?php  ?>
-          <div class="card-body">
-            <h5 class="card-title"><?php echo $b->nama_barang ?></h5>
-            <p class="card-text"><?php echo $b->deskripsi ?></p>
-            <p>Rp. <?php echo number_format($b->harga_jual, 0, ',', '.') ?></p>
-            <a href="#" class="btn btn-warning">Beli</a>
-            <a href="#" class="btn btn-success">Simpan</a>
-          </div>
+                  <?php foreach ($this->cart->contents() as $items) : ?>
 
-        </div>
-      </div>
-    <?php endforeach; ?>
-  </div>
-  <div class="row">
-    <?php foreach ($barang as $b) : ?>
-      <div class="col-md-3">
-        <div class="card">
-          <div class="card-body">
-            <img src="<?php echo base_url('assets/foto/' . $b->foto) ?>" class="card-img-top">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><?php echo $b->nama_barang ?></h5>
-            <p class="card-text"><?php echo $b->deskripsi ?></p>
-            <p>Rp. <?php echo number_format($b->harga_jual, 0, ',', '.') ?></p>
-            <a href="#" class="btn btn-warning">Beli</a>
-            <a href="#" class="btn btn-success">Simpan</a>
-          </div>
-        </div>
-      </div>
-    <?php endforeach; ?>
-  </div>
+                    <?php echo form_hidden($i . '[rowid]', $items['rowid']); ?>
+
+                    <tr>
+                      <td><?php echo form_input(array(
+                        'name' => $i . '[qty]', 
+                        'value' => $items['qty'], 
+                        'maxlength' => '3', 
+                        'type' => 'number',
+                        'class' => 'form-control',
+                        'size' => '5')); ?></td>
+                      <td>
+                        <?php echo $items['name']; ?>
+
+                        <!-- <?php if ($this->cart->has_options($items['rowid']) == TRUE) : ?>
+
+                          <p>
+                            <?php foreach ($this->cart->product_options($items['rowid']) as $option_name => $option_value) : ?>
+
+                              <strong><?php echo $option_name; ?>:</strong> <?php echo $option_value; ?><br />
+
+                            <?php endforeach; ?>
+                          </p>
+
+                        <?php endif; ?> -->
+
+                      </td>
+                      <td style="text-align:right"><?php echo $this->cart->format_number($items['price']); ?></td>
+                      <td style="text-align:right">$<?php echo $this->cart->format_number($items['subtotal']); ?></td>
+                    </tr>
+
+                    <?php $i++; ?>
+
+                  <?php endforeach; ?>
+
+                  <tr>
+                    <td colspan="2"> </td>
+                    <td class="right"><strong>Total</strong></td>
+                    <td class="right">$<?php echo $this->cart->format_number($this->cart->total()); ?></td>
+                  </tr>
+
+                </table>
+
+                <p><?php echo form_submit('', 'Update your Cart'); ?></p>

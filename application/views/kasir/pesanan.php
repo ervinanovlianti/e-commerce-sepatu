@@ -16,7 +16,7 @@
                     <div class="tab-content" id="nav-tabContent">
                         <!-- Pesanan Belum Dibayar -->
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                            
+
                             <?php echo $this->session->flashdata('msg') ?>
                             <table class="table table-striped table-hover">
                                 <tr>
@@ -84,7 +84,7 @@
                                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kirim<?= $ip->id  ?>">
                                                     Kirim
                                                 </button>
-                                                <!-- <a class="btn btn-primary" href="<?php echo base_url('kasir/pesanan/detail/' . $ip->id) ?>">Detail</a> -->
+                                                <a class="btn btn-success" href="<?php echo base_url('kasir/pesanan/detail/' . $ip->id) ?>">Detail</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -120,14 +120,16 @@
                                 <tr>
                                     <th>Kode Pesanan</th>
                                     <th>Nama Pemesan</th>
-                                    <th>Tanggal Pemesanan</th>
+                                    <th>Tanggal Selesai</th>
                                     <th>Total Bayar</th>
                                 </tr>
                                 <?php foreach ($selesai as $sl) : ?>
                                     <tr>
                                         <td><?php echo $sl->kode_pesanan ?></td>
                                         <td><?php echo $sl->nama_pelanggan ?></td>
-                                        <td><?php echo $sl->tanggal_pesan ?></td>
+                                        <td>
+                                            <span class="badge rounded-pill bg-success"><?php echo $sl->tgl_selesai ?></span>
+                                        </td>
                                         <td>
                                             <h5 class="fw-bold">Rp. <?php echo number_format($sl->total, 0, ',', '.') ?><br></h5>
                                             <span class="badge rounded-pill bg-danger">Pesanan Selesai</span>
@@ -197,12 +199,17 @@
                         <table class="table">
 
                             <tr>
-                                <th>No Rekening</th>
+                                <th>Bank/Akun Tujuan Transfer</th>
+                                <th>:</th>
+                                <td><?= $inv->tujuan ?></td>
+                            </tr>
+                            <tr>
+                                <th>No Rekening/No.Telp Akun Pengirim</th>
                                 <th>:</th>
                                 <td><?= $inv->no_rekening ?></td>
                             </tr>
                             <tr>
-                                <th>Atas Nama</th>
+                                <th>Atas Nama/Nama Akun Pengirim</th>
                                 <th>:</th>
                                 <td><?= $inv->atas_nama ?></td>
                             </tr>
@@ -220,4 +227,3 @@
             </div>
         </div>
     <?php endforeach; ?>
-    

@@ -62,7 +62,12 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('manager/laporanPenjualan/data_penjualan') ?>">
+              <i class="menu-icon mdi mdi-account-circle-outline"></i>
+              <span class="menu-title">Data</span>
+            </a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
               <i class="menu-icon mdi mdi-clipboard-text"></i>
@@ -84,7 +89,6 @@
               <i class="menu-icon mdi mdi-account-circle-outline"></i>
               <span class="menu-title">User</span>
             </a>
-
           </li>
         </ul>
       </nav>

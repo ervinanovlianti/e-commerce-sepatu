@@ -33,6 +33,7 @@
                     'id_pesanan'        => $id_pesanan,
                     'id_barang'         => $item['id'],
                     'nama_barang'       => $item['name'],
+                    'ukuran'            => $item['size'],
                     'jumlah'            => $item['qty'],
                     'harga'             => $item['price'],
                 );
@@ -109,7 +110,6 @@
             WHERE tb_pesanan.id=tb_detail_pesanan.id_pesanan AND tb_pesanan.id= $id");
             
         }
-    //Admin
         public function pesanan_baru()
         {
             $this->db->select('*');

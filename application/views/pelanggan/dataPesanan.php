@@ -30,6 +30,7 @@
                                 </tr>
 
                                 <?php $no = 1;
+                                $tgl_now = date("Y-m-d");
                                 foreach ($belum_bayar as $br) : ?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
@@ -37,7 +38,13 @@
                                         <td style="width: 20px;"><?php echo $br->nama_pelanggan ?></td>
                                         <td style="width: 20px;"><?php echo $br->nama_penerima ?></td>
                                         <td><?php echo $br->tanggal_pesan ?></td>
-                                        <td><?php echo $br->batas_bayar ?></td>
+                                        <td>
+                                            <?php if ($tgl_now >= $br->batas_bayar) { ?>
+                                                <span class="badge rounded-pill bg-danger">Expired Date</span>
+                                            <?php } else { ?>
+                                                <?php echo $br->batas_bayar ?>
+                                            <?php } ?>
+                                        </td>
                                         <td>
                                             <h5 class="fw-bold">Rp.<?php echo number_format($br->total, 0, ',', '.') ?></h5>
                                             <?php if ($br->status_bayar == 0) { ?>
@@ -51,8 +58,12 @@
                                         <td>
                                             <center>
                                                 <?php if (empty($br->bukti_bayar)) { ?>
-                                                    <a class="btn btn-primary" href="<?php echo base_url('pelanggan/transaksi/pembayaran/' . $br->id) ?>">Bayar</a>
-                                                    <a class="btn btn-danger" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')" href="<?php echo base_url('pelanggan/transaksi/pesananBatal/' . $br->id) ?>">Batalkan</a>
+                                                    <?php if ($tgl_now >= $br->batas_bayar) { ?>
+
+                                                    <?php } else { ?>
+                                                        <a class="btn btn-primary" href="<?php echo base_url('pelanggan/transaksi/pembayaran/' . $br->id) ?>">Bayar</a>
+                                                        <a class="btn btn-danger" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')" href="<?php echo base_url('pelanggan/transaksi/pesananBatal/' . $br->id) ?>">Batalkan</a>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </center>
                                         </td>

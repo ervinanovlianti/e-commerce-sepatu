@@ -15,9 +15,9 @@ class Dashboard extends CI_Controller{
     public function detailData($id)
     {
         $data['title'] = 'Detail Produk';
-        $this->load->model('model_barang');
-        $detail = $this->model_barang->detail_data($id);
-        $data['detail'] = $detail;
+        // $this->load->model('model_barang');
+        $data['detail'] = $this->model_barang->detail_data($id);
+        // $data['detail'] = $detail;
         $this->load->view('pelanggan/template/header');
         $this->load->view('pelanggan/template/sidebar');
         $this->load->view('pelanggan/detailBarang', $data);

@@ -61,4 +61,22 @@ class LaporanPenjualan extends CI_Controller
         $this->load->view('manager/templates_m/header');
         $this->load->view('manager/cetakLaporanTahunan', $data);
     }
+    public function data_penjualan()
+    {
+        $tanggal = $this->input->post('tanggal');
+        $bulan = $this->input->post('bulan');
+        $tahun = $this->input->post('tahun');
+        $data = array(
+            'tanggal' => $tanggal,
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+        );
+        $data['title'] = "Laporan Harian";
+        $data['laporan'] = $this->model_barang->data_harian($tanggal, $bulan, $tahun);
+        $this->load->view('manager/templates_m/header');
+        $this->load->view('manager/templates_m/sidebar');
+        $this->load->view('manager/dataPenjualan', $data);
+        $this->load->view('manager/templates_m/footer');
+    
+    }
 }

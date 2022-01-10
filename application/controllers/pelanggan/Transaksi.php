@@ -22,7 +22,7 @@ class Transaksi extends CI_Controller
     }
     public function bayar($id)
     {
-            // $jenis_pembayaran = $this->input->post('jenis_pembayaran');
+            $tujuan = $this->input->post('tujuan');
             $no_rekening = $this->input->post('no_rekening');
             $atas_nama = $this->input->post('atas_nama');
             $bukti_bayar = $_FILES['bukti_bayar']['name'];
@@ -40,7 +40,7 @@ class Transaksi extends CI_Controller
             }
             $data = [
                 'id' => $id,
-                // 'jenis_pembayaran' => $jenis_pembayaran,
+                'tujuan' => $tujuan,
                 'no_rekening' => $no_rekening,
                 'atas_nama' => $atas_nama, 
                 'bukti_bayar' => $bukti_bayar,
@@ -55,9 +55,11 @@ class Transaksi extends CI_Controller
         }
     public function pesananSelesai($id_pesanan)
     {
+        date_default_timezone_set('Asia/Makassar');
         $data = array(
             'id'    => $id_pesanan,
             'status_pesanan' => '3',
+            'tgl_selesai' => date('Y-m-d H:i:s'),
         );
         $this->model_invoice->update_pesanan($data);
         redirect('pelanggan/transaksi');

@@ -40,7 +40,6 @@ class DataBarang extends CI_Controller
         $data['kategori'] = $this->model_barang
             ->get_data('tb_kategori')
             ->result();
-        $data['ukuran'] = $this->model_barang->get_data('tb_ukuran')->result();
         $data['supplier'] = $this->model_barang->get_data('tb_supplier')->result();
         $this->load->view('admin/templates/header');
         $this->load->view('admin/templates/sidebar');
@@ -54,6 +53,7 @@ class DataBarang extends CI_Controller
         $nama_kategori                = $this->input->post('nama_kategori');
         $stok                         = $this->input->post('stok');
         $deskripsi                    = $this->input->post('deskripsi');
+        $ukuranVal                    = implode(",", $this->input->post('ukuran'));
         $modal                        = $this->input->post('modal');
         $id_supplier                  = $this->input->post('id_supplier');
         $foto                         = $_FILES['foto']['name'];
@@ -74,6 +74,7 @@ class DataBarang extends CI_Controller
             'nama_kategori' => $nama_kategori,
             'stok'          => $stok,
             'deskripsi'     => $deskripsi,
+            'ukuran'        => $ukuranVal,
             'modal'         => $modal,
             'harga_jual'    => $modal * 1.2,
             'id_supplier'   => $id_supplier,
@@ -84,18 +85,20 @@ class DataBarang extends CI_Controller
                                                     Barang baru berhasil ditambah
                                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                 </div>');
-        $barang_id = $this->db->insert_id();
-        $ukuran = count($this->input->post('ukuran[]'));
-        for ($i=0; $i < $ukuran ; $i++) { 
-            $datas[$i] = array(
-                'barang_id' => $id_barang ,
-                'ukuran'    => $this->input->post('ukuran['.$i.']')
-            );
-            $this->db->insert('tb_ukuran', $datas[$i]);
-        }
-       
+        // $barang_id = $this->db->insert_id();
+        // $ukuran = count($this->input->post('ukuran[]'));
+        // for ($i=0; $i < $ukuran ; $i++) { 
+            // $datas = array(
+            //     'barang_id' => $id_barang ,
+            //     'ukuran'    => $ukuranVal
+
+                // $this->input->post('ukuran['.$i.']')
+            // );
+            // $this->db->insert('tb_ukuran', $datas);
+        // }
         redirect('admin/dataBarang');
     }
+
     public function updateData($id)
     {
         $where            = ['id_barang' => $id];

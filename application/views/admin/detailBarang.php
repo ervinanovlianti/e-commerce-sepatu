@@ -30,7 +30,10 @@
                   <th>Kategori</th>
                   <td><?php echo $detail->nama_kategori ?></td>
                 </tr>
-
+                <tr>
+                  <th>Ukuran</th>
+                  <td><?php echo $detail->ukuran ?></td>
+                </tr>
                 <tr>
                   <th>Stok</th>
                   <td><?php echo $detail->stok ?></td>

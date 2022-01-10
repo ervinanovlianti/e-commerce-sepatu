@@ -12,7 +12,7 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title">Data Penjualan Harian</h4>
-            <?php echo form_open('admin/dataPenjualan') ?>
+            <?php echo form_open('manager/laporanPenjualan/data_penjualan') ?>
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
@@ -80,8 +80,6 @@
                         <th>NO.</th>
                         <th>TANGGAL</th>
                         <th>KODE TRANSAKSI</th>
-                        <th>NAMA PRODUK</th>
-                        <th>HARGA</th>
                         <th>TOTAL</th>
                         <th>PELANGGAN</th>
                         <th>STATUS BAYAR</th>
@@ -95,8 +93,6 @@
                           <td><?php echo $no++ ?></td>
                           <td><?php echo $lp->tanggal_pesan ?></td>
                           <td><?php echo $lp->kode_pesanan ?></td>
-                          <td><?php echo $lp->jumlah ?>x <?php echo $lp->nama_barang ?></td>
-                          <td><?php echo $lp->harga ?></td>
                           <td>
                             <?php if ($lp->status_bayar != 0) { ?>
                                 <?php echo $lp->total ?></td>

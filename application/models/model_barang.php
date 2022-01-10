@@ -23,14 +23,12 @@
         {
             $this->db->select('*');
             $this->db->from('tb_barang');
-            $this->db->join('tb_ukuran', 'tb_barang.id_barang = tb_ukuran.barang_id');
             return $this->db->get()->result();
         }
         public function detail_data($id = NULL)
         {
             $this->db->select('*');
             $this->db->from('tb_barang');
-            $this->db->join('tb_ukuran', 'tb_barang.id_barang = tb_ukuran.barang_id');
             $this->db->where('id_barang', $id);
             return $this->db->get()->row();
 
@@ -179,18 +177,6 @@
                 return FALSE;
             }
         }
-        public function find($id)
-        {
-            $result = $this->db->where('id_barang', $id)
-                            ->limit(1)
-                            ->get('tb_barang');
-            if($result->num_rows() > 0){
-                return $result->row();
-            }else{
-                return array();
-            }
-        }
-    
         public function get_keyword($keyword)
         {
             $this->db->select('*');
@@ -219,6 +205,15 @@
             $this->db->select('*');
             $this->db->from('tb_pesanan');
             $this->db->join('tb_detail_pesanan', 'tb_pesanan.id = tb_detail_pesanan.id_pesanan');
+            $this->db->where('DAY(tb_pesanan.tanggal_pesan)', $tanggal);
+            $this->db->where('MONTH(tb_pesanan.tanggal_pesan)', $bulan);
+            $this->db->where('YEAR(tb_pesanan.tanggal_pesan)', $tahun);
+            return $this->db->get()->result();
+        }
+        public function data_harian($tanggal, $bulan, $tahun)
+        {
+            $this->db->select('*');
+            $this->db->from('tb_pesanan');
             $this->db->where('DAY(tb_pesanan.tanggal_pesan)', $tanggal);
             $this->db->where('MONTH(tb_pesanan.tanggal_pesan)', $bulan);
             $this->db->where('YEAR(tb_pesanan.tanggal_pesan)', $tahun);
