@@ -22,20 +22,9 @@ class DataBarang extends CI_Controller
         $this->load->view('admin/dataBarang', $data);
         $this->load->view('admin/templates/footer');
     }
-    public function detailData($id)
-    {
-        $data['title'] = 'Detail Barang';
-        $this->load->model('model_barang');
-        $detail = $this->model_barang->detail_data($id);
-        $data['detail'] = $detail;
-        $this->load->view('admin/templates/header');
-        $this->load->view('admin/templates/sidebar');
-        $this->load->view('admin/detailBarang', $data);
-        $this->load->view('admin/templates/footer');
-    }
     public function tambahData()
     {
-        $data['title'] = 'Tambah Data Barang Baru';
+        $data['title'] = 'Tambah Barang Baru';
         $data['kode'] = $this->model_barang->kodebarang();
         $data['kategori'] = $this->model_barang
             ->get_data('tb_kategori')
@@ -85,19 +74,20 @@ class DataBarang extends CI_Controller
                                                     Barang baru berhasil ditambah
                                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                                 </div>');
-        // $barang_id = $this->db->insert_id();
-        // $ukuran = count($this->input->post('ukuran[]'));
-        // for ($i=0; $i < $ukuran ; $i++) { 
-            // $datas = array(
-            //     'barang_id' => $id_barang ,
-            //     'ukuran'    => $ukuranVal
-
-                // $this->input->post('ukuran['.$i.']')
-            // );
-            // $this->db->insert('tb_ukuran', $datas);
-        // }
         redirect('admin/dataBarang');
     }
+    public function detailData($id)
+    {
+        $data['title'] = 'Detail Barang';
+        $this->load->model('model_barang');
+        $detail = $this->model_barang->detail_data($id);
+        $data['detail'] = $detail;
+        $this->load->view('admin/templates/header');
+        $this->load->view('admin/templates/sidebar');
+        $this->load->view('admin/detailBarang', $data);
+        $this->load->view('admin/templates/footer');
+    }
+   
 
     public function updateData($id)
     {

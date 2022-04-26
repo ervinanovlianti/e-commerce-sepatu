@@ -37,9 +37,6 @@ class Welcome extends CI_Controller {
                     case 2:
                         redirect('kasir/dashboard');
                         break;
-                    case 3:
-                        redirect('manager/dashboard');
-                        break;
                     default:
                         break;
                 }

@@ -10,7 +10,7 @@
             <div class="card">
               <div class="card-body">
                 <?= $this->session->flashdata('msg_new')  ?>
-                <a class="btn btn-outline-success" href="<?php echo base_url('admin/dataBarang/tambahData') ?>"> Tambah Data </a>
+                <a class="btn btn-outline-primary" href="<?php echo base_url('admin/dataBarang/tambahData') ?>">Tambah Data Baru </a>
                 <div class="table-responsive">
                   <table class="table table-striped">
                     <thead>
@@ -36,12 +36,12 @@
                           <td><img src="<?php echo base_url('assets/foto/' . $brg->foto) ?>"></td>
                           <td><?php echo $brg->id_barang ?></td>
                           <td><?php echo $brg->nama_barang ?></td>
-                          <td><?php echo $brg->ukuran?></td>
+                          <td><?php echo $brg->ukuran ?></td>
                           <td><span class="badge rounded-pill bg-success"><?php echo $brg->stok ?></span></td>
                           <td>Rp.<?php echo number_format($brg->modal, 0, ',', '.') ?></td>
                           <td>Rp.<?php echo number_format($brg->harga_jual, 0, ',', '.') ?></td>
                           <td><?php echo $brg->nama_kategori ?></td>
-    
+
                           <td>
                             <center>
                               <a class="btn btn-sm btn-info" href="<?php echo base_url('admin/dataBarang/detailData/' . $brg->id_barang) ?>"><i class="mdi mdi-apps"></i></a>

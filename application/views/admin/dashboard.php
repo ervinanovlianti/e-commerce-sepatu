@@ -11,27 +11,42 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="statistics-details d-flex align-items-center justify-content-between">
-                    <div>
-                      <p class="statistics-title">Semua Barang</p>
-                      <h3 class="rate-percentage text-center"><?php echo $barang ?></h3>
+                    <div class="d-none d-md-block">
+                      <p class="statistics-title">Invoices</p>
+                      <h3 class="rate-percentage text-center">
+                        <?php
+                        $grand_total = 0;
+                        foreach ($barang_terjual as $key => $value) {
+                          $tot_harga = $value->total;
+                          $grand_total = $grand_total + $tot_harga;
+                        ?>
+                        <?php } ?>
+                        <div class="badge rounded-pill bg-primary">
+                          Rp. <?php echo number_format($grand_total) ?>
+                        </div>
+                      </h3>
                     </div>
+                    <!-- <div>
+                      <p class="statistics-title">Jumlah Barang</p>
+                      <h3 class="rate-percentage text-center"><?php echo $barang ?></h3>
+                    </div> -->
                     <div>
                       <p class="statistics-title">Barang Masuk</p>
                       <h3 class="rate-percentage text-center"><?php echo $barangmasuk ?></h3>
                     </div>
-                    
+
                     <div class="d-none d-md-block">
-                      <p class="statistics-title">Supplier</p>
+                      <p class="statistics-title">Barang Keluar</p>
                       <h3 class="rate-percentage text-center"><?php echo $supplier ?></h3>
                     </div>
                     <div class="d-none d-md-block">
                       <p class="statistics-title">Pelanggan</p>
                       <h3 class="rate-percentage text-center"><?php echo $pelanggan ?></h3>
                     </div>
-                    <div class="d-none d-md-block">
+                    <!-- <div class="d-none d-md-block">
                       <p class="statistics-title">User</p>
                       <h3 class="rate-percentage text-center"><?php echo $user ?></h3>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -54,7 +69,6 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Id Barang</th>
                     <th>Nama Barang</th>
                     <th>Stok</th>
                   </tr>
@@ -63,16 +77,12 @@
                   <?php foreach ($stok_minim as $key => $value) { ?>
                     <tr>
                       <td>
-                        <?php echo $value->id_barang ?>
-                      </td>
-                      <td>
                         <?php echo $value->nama_barang ?>
 
                       </td>
                       <td>
                         <div class="badge rounded-pill bg-warning">
                           <?php echo $value->stok ?>
-
                         </div>
                       </td>
                     </tr>
@@ -133,7 +143,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Id Barang</th>
+                    <th>Nama Barang</th>
                     <th>Jumlah</th>
                   </tr>
                 </thead>
@@ -141,7 +151,7 @@
                   <?php foreach ($barang_masuk as $key => $value) { ?>
                     <tr>
                       <td>
-                        <?php echo $value->id_barang ?>
+                        <?php echo $value->nama_barang ?>
                       </td>
                       <td class="text-center">
                         <div class="badge rounded-pill bg-info">
