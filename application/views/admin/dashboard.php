@@ -16,7 +16,7 @@
                       <h3 class="rate-percentage text-center">
                         <?php
                         $grand_total = 0;
-                        foreach ($barang_terjual as $key => $value) {
+                        foreach ($invoices as $key => $value) {
                           $tot_harga = $value->total;
                           $grand_total = $grand_total + $tot_harga;
                         ?>
@@ -36,8 +36,8 @@
                     </div>
 
                     <div class="d-none d-md-block">
-                      <p class="statistics-title">Barang Keluar</p>
-                      <h3 class="rate-percentage text-center"><?php echo $supplier ?></h3>
+                      <p class="statistics-title">Transaksi</p>
+                      <h3 class="rate-percentage text-center"><?php echo $transaksi ?></h3>
                     </div>
                     <div class="d-none d-md-block">
                       <p class="statistics-title">Pelanggan</p>

@@ -18,33 +18,49 @@
                 <div class="form-group">
                   <label>Dari Tanggal</label>
                   <input type="date" name="tanggal" id="" class="form-control">
+                  <!-- <select class="form-control" name="tanggal">
+                    <?php
                     $mulai = 1;
                     for ($i = $mulai; $i < $mulai + 31; $i++) {
                       echo '<option value="' . $i . '">' . $i . '</option>';
                     }
+                    ?>
+                  </select> -->
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Sampai Tanggal</label>
                   <input type="date" name="bulan" id="" class="form-control">
-                  
+                  <!-- <select class="form-control" name="bulan">
+                    <?php
                     $mulai = 1;
                     for ($i = $mulai; $i < $mulai + 12; $i++) {
                       echo '<option value="' . $i . '">' . $i . '</option>';
                     }
+                    ?>
+                  </select> -->
                 </div>
               </div>
+              <!-- <div class="col-md-4">
+                <div class="form-group">
+                  <label>Tahun</label>
+                  <select class="form-control" name="tahun">
+                    <?php
                     $mulai = date('Y');
                     for ($i = $mulai; $i < $mulai + 5; $i++) {
                       echo '<option value="' . $i . '">' . $i . '</option>';
                     }
+                    ?>
+                  </select>
                 </div>
               </div> -->
               <div class="col-md-12">
+               
                 <div class="d-grid">
                   <button type="submit" class="btn btn-primary btn-block">Generate</button>
                 </div>
+                
               </div>
             </div>
             <?php echo form_close() ?>
@@ -54,7 +70,9 @@
       <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
           <div class="card-body">
+            <!-- <h4 class="card-title">Data Penjualan Harian Per : <strong><?php echo $tanggal ?>/<?php echo $bulan ?>/</strong></h4> -->
             <h4 class="card-title">Data Penjualan Dari Tanggal : <strong><?php echo $tanggal ?> Sampai <?php echo $bulan ?></strong></h4>
+
             <div class="table-responsive mt-4">
               <div class="col-md-12">
                 <?php
@@ -73,6 +91,7 @@
                       </tr>
                     </thead>
                     <tbody>
+
                       <?php $no = 1;
                       foreach ($laporan as $lp) : ?>
                         <tr>
@@ -82,6 +101,7 @@
                           <td>
                             <?php if ($lp->status_bayar != 0) { ?>
                               <?php echo $lp->total ?></td>
+
                         <?php } ?>
                         <td><?php echo $lp->nama_pelanggan ?></td>
                         <td>
@@ -98,9 +118,12 @@
                               <span class="badge rounded-pill bg-success">Pesanan Dikirim</span>
                             <?php } elseif ($lp->status_pesanan == 3) { ?>
                               <span class="badge rounded-pill bg-danger">Pesanan Selesai</span>
+
                             <?php } ?>
+
                           <?php } ?>
                         </td>
+
                         </tr>
                       <?php endforeach; ?>
                     </tbody>
@@ -109,6 +132,7 @@
                   <span class="badge badge-danger"><i class="fas fa-info-circle"></i>
                     Data masih kosong, silahkan filter data terlebih dahulu berdasarkan tanggal, bulan dan tahun.
                   </span>
+
                 <?php } ?>
               </div>
             </div>

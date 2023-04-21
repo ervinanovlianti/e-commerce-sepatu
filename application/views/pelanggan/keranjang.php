@@ -55,8 +55,8 @@
                     </tr>
                     <tr>
                       <td colspan="6" align="right">
-                        <button type="submit" class="btn btn-primary me-4">Update</button>
-                        <a class="btn btn-warning me-4" href="<?= base_url('pelanggan/dashboard'); ?>">Lanjut Belanja</a>
+                        <button type="submit" class="btn btn-primary me-4">Update Chart</button>
+                        <a class="btn btn-secondary me-4" href="<?= base_url('pelanggan/dashboard'); ?>">Kembali</a>
                         <a class="btn btn-success" href="<?= base_url('pelanggan/keranjang/pesan'); ?>">Check Out</a>
                       </td>
                     </tr>

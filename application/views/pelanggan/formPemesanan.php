@@ -73,17 +73,17 @@
                         <div class="form-group">
                             <label>Nama Penerima</label>
                             <input type="text" class="form-control" name="nama_penerima" required>
-                            <p style="color: red;">*masukkan nama penerima pesanan anda)</p>
+                            <p class="fst-italic">*masukkan nama penerima pesanan anda</p>
                         </div>
                         <div class="form-group">
                             <label>Alamat Lengkap</label>
                             <input type="text" class="form-control" name="alamat" required>
-                            <p style="color: red;">*masukkan alamat lengkap tujuan(jl/rt/rt)</p>
+                            <p class="fst-italic">*masukkan alamat lengkap tujuan(jl/rt/rt)</p>
                         </div>
                         <div class="form-group">
                             <label>No. Telepon</label>
                             <input type="text" class="form-control" name="notelp" required>
-                            <p style="color: red;">*masukkan no.telepon/no.wa yang dapat dihubungi)</p>
+                            <p class="fst-italic">*masukkan no.telepon/no.wa yang dapat dihubungi)</p>
                         </div>
                         <div class="form-group">
                             <label>Jasa Pengiriman</label>
