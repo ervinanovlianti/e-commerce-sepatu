@@ -1,4 +1,4 @@
-# Toko Online Sepatu Kita
+# SISTEM INFORMASI PENJUALAN SEPATU (E-Commerce)
 Proyek ini merupakan tugas akhir mata kuliah Rekayasa Perangkat Lunak. Proyek ini dikerjakan secara berkelompok mulai dari tahap perencanaan, analisis, design, lalu ke tahap pengembangan, kemudian peluncuran pada server online dan terakhir pemeliharaan. Pada proyek ini sangat dibutuhkan kerja sama antar kelompok untuk mendukung keberhasilan sistem yang dibangun.
 
 # Deskripsi
@@ -6,3 +6,5 @@ Dibangun dengan bahasa pemrograman PHP menggunakan framework Codeigniter 3 (CI 3
 
 # Persyaratan Sistem 
 - PHP versi 5.3.7
+- Framework : CodeIgniter 3
+- Database : MySQL
