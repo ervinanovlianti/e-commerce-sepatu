@@ -12,10 +12,10 @@
               <!-- <h4 class="card-title">Form Input Barang Masuk</h4> -->
               <form class="forms-sample" method="post" action="<?php echo base_url('admin/dataBarang/tambahDataAksi') ?>" enctype="multipart/form-data">
                 <div class="form-group">
-                  <label>Id Barang</label>
-                  <input type="text" name="id_barang" class="form-control" value="<?php echo $kode; ?>" readonly>
+                  <!-- <label>Id Barang</label> -->
+                  <input type="hidden" name="id_barang" class="form-control" value="<?php echo $kode; ?>" readonly>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-top: 0;">
                   <label>Nama Barang</label>
                   <input type="text" class="form-control" name="nama_barang" required>
                 </div>
@@ -39,7 +39,6 @@
                           echo '&nbsp &nbsp';
                           echo '<label class="form-check-label" for="inlineCheckbox1">' . $i . '</label>';
                         echo '&nbsp &nbsp';
-
                       }
                         ?>
                     </div>
@@ -61,7 +60,7 @@
                   <input type="hidden" class="form-control" name="harga_jual" required>
                 </div>
                 <div class="form-group">
-                  <label for="">Nama Supplier</label>
+                  <label for="">Supplier</label>
                   <select name="id_supplier" class="form-control">
                     <option value="">--Pilih Supplier--</option>
                     <?php foreach ($supplier as $sp) : ?>

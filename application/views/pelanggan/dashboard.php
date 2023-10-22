@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="row">
                 <?php foreach ($barang as $key => $value) { ?>
-                    <div class="col-sm-2 grid-margin stretch-card">
+                    <div class="col-sm-3 grid-margin stretch-card">
                         <?php
                         echo
                         form_open('pelanggan/keranjang/add');
@@ -29,7 +29,7 @@
                                     <?php } ?>
                                 </p>
                                 <p>Ukuran : <?php echo $value->ukuran ?></p>
-                                <button type="submit" class="btn btn-danger btn-sm"><i class="mdi mdi-cart-plus"></i>Add</button>
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="mdi mdi-cart-plus"></i>Keranjang</button>
                                 <!-- <a class="btn btn-sm btn-danger me-2" href="<?php echo base_url('pelanggan/keranjang/tambahKeranjang/' . $value->id_barang) ?>"><i class="mdi mdi-cart-plus"></i>Add</a> -->
                                 <a class="btn btn-sm btn-info" href="<?php echo base_url('pelanggan/dashboard/detailData/' . $value->id_barang) ?>"><i class="mdi mdi-apps"> </i>Detail</a>
                             </div>

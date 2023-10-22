@@ -30,7 +30,7 @@
         $this->load->view('admin/dataPenjualan', $data);
         $this->load->view('admin/templates/footer');
     }
-    public function penjualana()
+    public function penjualan()
     {
         $tanggal = $this->input->post('tanggal');
         $bulan = $this->input->post('bulan');

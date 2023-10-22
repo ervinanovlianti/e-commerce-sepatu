@@ -12,8 +12,8 @@
                             <!-- <h4 class="card-title">Form Input Barang Masuk</h4> -->
                             <form class="forms-sample" method="post" action="<?php echo base_url('admin/dataPemasukan/tambahDataAksi') ?>" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label>Id Barang Masuk</label>
-                                    <input type="text" class="form-control" name="id_barangmasuk" value="<?php echo $kode; ?>" readonly>
+                                    <!-- <label>Id Barang Masuk</label> -->
+                                    <input type="hidden" class="form-control" name="id_barangmasuk" value="<?php echo $kode; ?>" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label>Tanggal Masuk</label>
