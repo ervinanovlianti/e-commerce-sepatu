@@ -93,7 +93,6 @@
           </div>
         </div>
       </div>
-
       <div class="col-4 grid-margin stretch-card">
         <div class="card card-rounded">
           <div class="card-body">

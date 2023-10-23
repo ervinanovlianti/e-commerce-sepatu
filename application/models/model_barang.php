@@ -31,12 +31,12 @@
             $this->db->from('tb_barang');
             $this->db->where('id_barang', $id);
             return $this->db->get()->row();
-
         }
         public function barang_masuk()
         {
             $this->db->select('*');
             $this->db->from('tb_barang_masuk');
+            $this->db->join('tb_barang', 'tb_barang_masuk.id_barang = tb_barang.id_barang');
             return $this->db->get()->result();
         }
         public function stok_minim()

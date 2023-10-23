@@ -1,7 +1,7 @@
-<div class="container-fluid" style="margin-top: 50px;">
-    <div class="card" style="margin-bottom: 120px;">
-        <div class="card-body">
-            <div class="row">
+<div class="container-fluid" style="margin: 25px;">
+    <!-- <div class="card" style="margin-bottom: 120px;"> -->
+        <!-- <div class="card-body"> -->
+            <div class="row" style="margin-top: 100px;">
                 <?php foreach ($barang as $key => $value) { ?>
                     <div class="col-sm-3 grid-margin stretch-card">
                         <?php
@@ -20,7 +20,7 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $value->nama_barang ?></h5>
-                                <p>Price : Rp. <?php echo number_format($value->harga_jual, 0, ',', '.') ?></p>
+                                <p>Harga : Rp. <?php echo number_format($value->harga_jual, 0, ',', '.') ?></p>
                                 <p>Stok :
                                     <?php if ($value->stok != 0) { ?>
                                         <span class="badge rounded-pill bg-info"><?php echo $value->stok ?></span>
@@ -30,7 +30,6 @@
                                 </p>
                                 <p>Ukuran : <?php echo $value->ukuran ?></p>
                                 <button type="submit" class="btn btn-danger btn-sm"><i class="mdi mdi-cart-plus"></i>Keranjang</button>
-                                <!-- <a class="btn btn-sm btn-danger me-2" href="<?php echo base_url('pelanggan/keranjang/tambahKeranjang/' . $value->id_barang) ?>"><i class="mdi mdi-cart-plus"></i>Add</a> -->
                                 <a class="btn btn-sm btn-info" href="<?php echo base_url('pelanggan/dashboard/detailData/' . $value->id_barang) ?>"><i class="mdi mdi-apps"> </i>Detail</a>
                             </div>
                         </div>
@@ -38,5 +37,5 @@
                     </div>
                 <?php } ?>
             </div>
-        </div>
-    </div>
+        <!-- </div> -->
+    <!-- </div> -->

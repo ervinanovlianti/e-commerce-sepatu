@@ -5,7 +5,6 @@
                 <div class="card-title">Data Transaksi</div>
                 <div class="card-body">
                     <?= $this->session->flashdata('msg_pay')  ?>
-
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pesanan Saya</button>
@@ -21,21 +20,20 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Kode Pesanan</th>
-                                    <th>Nama Pemesan</th>
+                                    <!-- <th>Nama Pemesan</th> -->
                                     <th>Nama Penerima</th>
                                     <th>Tanggal Pesan</th>
                                     <th>Batas Bayar</th>
                                     <th>Total Bayar</th>
                                     <th>Aksi</th>
                                 </tr>
-
                                 <?php $no = 1;
                                 $tgl_now = date("Y-m-d");
                                 foreach ($belum_bayar as $br) : ?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td style="width: 10px;"><?php echo $br->kode_pesanan ?></td>
-                                        <td style="width: 20px;"><?php echo $br->nama_pelanggan ?></td>
+                                        <!-- <td style="width: 20px;"><?php echo $br->nama_pelanggan ?></td> -->
                                         <td style="width: 20px;"><?php echo $br->nama_penerima ?></td>
                                         <td><?php echo $br->tanggal_pesan ?></td>
                                         <td>
@@ -59,10 +57,9 @@
                                             <center>
                                                 <?php if (empty($br->bukti_bayar)) { ?>
                                                     <?php if ($tgl_now >= $br->batas_bayar) { ?>
-
                                                     <?php } else { ?>
                                                         <a class="btn btn-primary" href="<?php echo base_url('pelanggan/transaksi/pembayaran/' . $br->id) ?>">Bayar</a>
-                                                        <a class="btn btn-danger" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')" href="<?php echo base_url('pelanggan/transaksi/pesananBatal/' . $br->id) ?>">Batalkan</a>
+                                                        <a class="btn btn-danger" onclick="return confirm('Yakin Ingin Membatalkan Pesanan?')" href="<?php echo base_url('pelanggan/transaksi/pesananBatal/' . $br->id) ?>">Cancel</a>
                                                     <?php } ?>
                                                 <?php } ?>
                                             </center>
@@ -76,7 +73,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Kode Pesanan</th>
-                                    <th>Nama Pemesan</th>
+                                    <!-- <th>Nama Pemesan</th> -->
                                     <th>Nama Penerima</th>
                                     <th>Tanggal Pesan</th>
                                     <th>Total Bayar</th>
@@ -86,7 +83,7 @@
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $dp->kode_pesanan ?></td>
-                                        <td><?php echo $dp->nama_pelanggan ?></td>
+                                        <!-- <td><?php echo $dp->nama_pelanggan ?></td> -->
                                         <td><?php echo $dp->nama_penerima ?></td>
                                         <td><?php echo $dp->tanggal_pesan ?></td>
                                         <td>
@@ -102,7 +99,7 @@
                             <table class="table table-striped table-hover">
                                 <tr>
                                     <th>Kode Pesanan</th>
-                                    <th>Nama Pemesan</th>
+                                    <!-- <th>Nama Pemesan</th> -->
                                     <th>Tanggal Pemesanan</th>
                                     <th>Total Bayar</th>
                                     <th>No Resi</th>
@@ -111,7 +108,7 @@
                                 <?php foreach ($dikirim as $dk) : ?>
                                     <tr>
                                         <td><?php echo $dk->kode_pesanan ?></td>
-                                        <td><?php echo $dk->nama_pelanggan ?></td>
+                                        <!-- <td><?php echo $dk->nama_pelanggan ?></td> -->
                                         <td><?php echo $dk->tanggal_pesan ?></td>
                                         <td>
                                             <h5 class="fw-bold">Rp. <?php echo number_format($dk->total, 0, ',', '.') ?></h5>
@@ -131,7 +128,7 @@
                             <table class="table table-striped table-hover">
                                 <tr>
                                     <th>Kode Pesanan</th>
-                                    <th>Nama Pemesan</th>
+                                    <!-- <th>Nama Pemesan</th> -->
                                     <th>Tanggal Pemesanan</th>
                                     <th>Total Bayar</th>
                                     <th>Status</th>
@@ -139,7 +136,7 @@
                                 <?php foreach ($selesai as $sl) : ?>
                                     <tr>
                                         <td><?php echo $sl->id ?></td>
-                                        <td><?php echo $sl->nama_pelanggan ?></td>
+                                        <!-- <td><?php echo $sl->nama_pelanggan ?></td> -->
                                         <td><?php echo $sl->tanggal_pesan ?></td>
                                         <td>
                                             <h5 class="fw-bold">Rp. <?php echo number_format($sl->total, 0, ',', '.') ?></h5>
@@ -152,7 +149,6 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
